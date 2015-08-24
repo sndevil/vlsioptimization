@@ -24,6 +24,10 @@ def check_valid(input_string):
     except:
         print("Problem In Input")
         return None
+def table_maker(obj):
+    pass
+def func_creator(obj):
+    pass
 
 
 class VLSI:
