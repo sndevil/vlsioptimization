@@ -1,5 +1,8 @@
 import string
 def input_num(obj):
+    '''
+    (VLSI_Object)-> (Input_list,Numer Of Inputs)
+'''
     try:
         input_list=[]
         for i in obj.input:
@@ -10,21 +13,31 @@ def input_num(obj):
         print("Please Pass VLSI Object To Function")
         return None
 def check_valid(input_string):
-    for i in input_string:
-        if i not in string.ascii_letters+"'+^.":
-            return False
-    return True
+    '''
+    (Str)->Boolean
+'''
+    try:
+        for i in input_string:
+            if i not in string.ascii_letters+"'+^.":
+                return False
+        return True
+    except:
+        print("Problem In Input")
+        return None
+
 
 class VLSI:
     def __init__(self,string):
         if check_valid(string):
-             self.input=string
-             self.func=None
+             self.input=string # Input String
+             self.func=None   # Converted Boolean Function
         else:
             print("Please Enter Valid String")
     def __str__(self):
+        #This Function Is For Show Object In Print Format
         return "VLSI("+self.input+")"
     def __repr__(self):
+        # Representing VLSI Object
         return "VLSI_Object(Input_String="+self.input+")"
         
             
