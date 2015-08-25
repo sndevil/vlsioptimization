@@ -35,6 +35,7 @@ class VLSI:
         if check_valid(string):
              self.input=string # Input String
              self.func=None   # Converted Boolean Function
+             self.inputnum=None # Number Of Inputs
         else:
             print("Please Enter Valid String")
     def __str__(self):
