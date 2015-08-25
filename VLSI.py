@@ -14,9 +14,9 @@ class VLSI:
     
     def __init__(self,string):
         if check_valid(string):
-            print(string)
+            #  print(string)
             self.input=string # Input String
-            
+            self.inputnum=input_num(self) # Add Input Number As Attribute
             if string.find('+')!=-1:
                 self.func = Or
                 self.funcindex = 0
