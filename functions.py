@@ -1,4 +1,5 @@
 import string
+valid_input=[1,0,True,False] # Valid Input For Boolean Functions
 def input_num(obj):
     '''
     (VLSI_Object)-> (Input_list,Numer Of Inputs)
@@ -28,27 +29,3 @@ def table_maker(obj):
     pass
 def func_creator(obj):
     pass
-
-def And(a,b):
-    return a and b
-
-def Or(a,b):
-    return a or b
-
-def Xor(a,b):
-    if (a == b):
-        return false
-    else:
-        return true
-def Not(a):
-    return not(a)
-    
-def Nand(a,b):
-    
-    return not(a and b)
-
-def Nor(a,b):
-    return not(a or b)
-
-def Xnor(a,b):
-    return not(Xor(a,b))

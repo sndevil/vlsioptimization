@@ -1,5 +1,6 @@
 #import LogicToken
 from functions import * # Outside Of The Class Functions
+from logic import *
 class Variables:
     varlist = []
     strlist = []
@@ -92,9 +93,9 @@ while (i < len(temp)):
 for i in range(0,indexcounter):
     print(VLSIlist[i])
     if VLSIlist[i].funcindex == 0:
-        print('func: and')
-    if VLSIlist[i].funcindex == 1:
         print('func: or')
+    if VLSIlist[i].funcindex == 1:
+        print('func: and')
     if VLSIlist[i].funcindex == 2:
         print('func: xor')
     if VLSIlist[i].funcindex == 3:
