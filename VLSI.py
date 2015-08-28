@@ -6,7 +6,15 @@ class Variables:
     def __init__(self):
         pass
 
+class inputVars:
+    ptrlist = []
+    strlist = []
+    def __init__(self):
+        pass
+    
+
 varlist = Variables()
+inputs = inputVars()
     
 
 class VLSI:
@@ -44,16 +52,22 @@ class VLSI:
                     
                     for i in range(0,len(varlist.strlist)):
                         if (temp1 == varlist.strlist[i]): #first var exists
-                            self.firstvar = i #ling to existing
+                            self.firstvar = i #link to existing
                         if (temp2 == varlist.strlist[i]):
                             self.secondvar = i
                         if (output == varlist.strlist[i]):
                             self.outputvar = i
                     if (self.firstvar == -1): #first var is a new var
+                        if (temp1[0] != '#'):
+                            inputs.ptrlist.append(len(varlist.strlist))
+                            inputs.strlist.append(temp1)
                         varlist.strlist.append(temp1)
                         varlist.varlist.append(0)
                         self.firstvar = len(varlist.varlist) - 1
                     if (self.secondvar == -1): #second var is a new var
+                        if (temp2[0] != '#'):
+                            inputs.ptrlist.append(len(varlist.strlist))
+                            inputs.strlist.append(temp2)
                         varlist.strlist.append(temp2)
                         varlist.varlist.append(0)
                         self.secondvar = len(varlist.varlist) - 1
@@ -91,11 +105,23 @@ class VLSI:
         # Representing VLSI Object
         return "VLSI_Object(Input_String="+self.input+")"
 
-            
-#input the string to pass to VLSI object list
-inputstring = input("enter the logic function string:\n")
+    def function(self):
+        varlist.varlist[self.outputvar] = self.func(a = varlist.varlist[self.firstvar],b = varlist.varlist[self.secondvar])
 
 VLSIlist = []
+
+
+def calculate_result():
+    for temp in VLSIlist:
+        temp.function()
+
+    return str(varlist.varlist[VLSIlist[len(VLSIlist)-1].outputvar])
+        
+    
+    
+           
+#input the string to pass to VLSI object list
+inputstring = input("enter the logic function string:\n")
 
 start = -2
 end = -1
@@ -119,7 +145,15 @@ while (i < len(temp)):
         
         if (start < 0):
             break
-
+    elif (i == len(temp) -1):
+        start = 0
+        end = len(temp) - 1
+        indexcounter += 1
+        packname = ('#%d#' % indexcounter)
+        tempobject = VLSI(temp,packname)
+        VLSIlist.append(tempobject)
+        break
+        
     if (start >= 0):
         indexcounter+=1
         temp1 = temp[start+1:end]
@@ -133,26 +167,53 @@ while (i < len(temp)):
 
  
     i+=1
-print('Variables used:')
-for k in range(0,len(varlist.varlist)):
-        print(str(k))
-        print('value:' + str(varlist.varlist[k]))
-        print('string token:' + varlist.strlist[k])
-        print()
 
-print ('gates used:')
-for i in range(0,indexcounter):
-    print("input variables" + str(i) + ": " + str(VLSIlist[i].firstvar) + " , " + str(VLSIlist[i].secondvar) )
-    print("output variable: " + str(VLSIlist[i].outputvar))
-    if VLSIlist[i].funcindex == 0:
-        print('func: or')
-    if VLSIlist[i].funcindex == 1:
-        print('func: and')
-    if VLSIlist[i].funcindex == 2:
-        print('func: xor')
-    if VLSIlist[i].funcindex == 3:
-        print('func: not')
-    print ()
+outstr = ''
+for i in inputs.strlist:
+    outstr += i
+
+print (outstr+ '   Out') 
+
+for counter in range(0,2**(len(inputs.strlist))):
+    temp = counter
+    outstr = ''
+    for i in range(0,len(inputs.strlist)):
+        #inputstr = input(inputs.strlist[i] + " = ")
+        outstr += str(temp%2)
+        varlist.varlist[inputs.ptrlist[i]] = int(temp%2)
+        temp =int(temp/ 2)
+
+    outstr += '   ' + calculate_result()
+    counter+=1
+    print(outstr)
+
+#
+#print('Variables used:')
+#for k in range(0,len(varlist.varlist)):
+#        print(str(k))
+#        print('value:' + str(varlist.varlist[k]))
+#        print('string token:' + varlist.strlist[k])
+#        print()
+
+#for k in range(0,len(inputs.strlist)):
+#        print(str(k))
+#        print('value:' + str(inputs.ptrlist[k]))
+#        print('string token:' + inputs.strlist[k])
+#        print()
+
+#print ('gates used:')
+#for i in range(0,indexcounter):
+#    print("input variables" + str(i) + ": " + str(VLSIlist[i].firstvar) + " , " + str(VLSIlist[i].secondvar) )
+#    print("output variable: " + str(VLSIlist[i].outputvar))
+#    if VLSIlist[i].funcindex == 0:
+#        print('func: or')
+#    if VLSIlist[i].funcindex == 1:
+#        print('func: and')
+#    if VLSIlist[i].funcindex == 2:
+#        print('func: xor')
+#    if VLSIlist[i].funcindex == 3:
+#        print('func: not')
+#    print ()
                         
 
 

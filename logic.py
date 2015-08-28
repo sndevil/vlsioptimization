@@ -1,28 +1,28 @@
 def And(a,b):
-    if (a in valid_input and b in valid_input):
+    if (a in [0,1] and b in [0,1]):
         return a and b
     else:
         print("Input Is Not Boolean")
         return None
 
 def Or(a,b):
-    if (a in valid_input and b in valid_input):
+    if (a in [0,1] and b in [0,1]):
         return a or b
     else:
         print("Input Is Not Boolean")
         return None
 
 def Xor(a,b):
-    if (a in valid_input and b in valid_input): 
+    if (a in [0,1] and b in [0,1]): 
         if (a == b):
-            return False
+            return 0
         else:
-            return True
+            return 1
     else:
         print("Input Is Not Boolean")
         return None
 def Not(a):
-    if a in valid_input:
+    if a in [0,1]:
         return not(a)
     else:
         print("Input Is Not Boolean")
