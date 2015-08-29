@@ -1,15 +1,15 @@
 import string
 valid_input=[1,0,True,False] # Valid Input For Boolean Functions
-def input_num(obj):
+def input_num(input_str):
     '''
     (VLSI_Object)-> (Input_list,Numer Of Inputs)
 '''
     try:
         input_list=[]
-        for i in obj.input:
+        for i in input_str:
             if (i in string.ascii_letters) and (i not in input_list):
                 input_list.append(i)
-        return (input_list,len(input_list))
+        return len(input_list)
     except:
         print("Please Pass VLSI Object To Function")
         return None
