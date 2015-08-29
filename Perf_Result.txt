@@ -1,3 +1,3 @@
-Test_Case3.txt : ,Input Var Number: 5Elapsed Time: 0.734735236208378 Sec  2015-08-29 16:01:27.225591
-Manual Function : ,Input Var Number: 3Elapsed Time: 0.21144144816875768 Sec  2015-08-29 16:08:25.178421
-Manual Function : ,Input Var Number: 4Elapsed Time: 0.22490011276599967 Sec  2015-08-29 16:09:38.478848
+Test_Case1.txt : ,Input Var Number: 4 Input Operation Number: 199 Elapsed Time: 0.7259549900136397 Sec  2015-08-29 22:10:29.099632
+Test_Case2.txt : ,Input Var Number: 3 Input Operation Number: 19 Elapsed Time: 0.2157521719034012 Sec  2015-08-29 22:10:49.375929
+Test_Case3.txt : ,Input Var Number: 6 Input Operation Number: 139 Elapsed Time: 1.5118508275020488 Sec  2015-08-29 22:11:01.623444

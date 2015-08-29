@@ -21,6 +21,7 @@ else:
     inputstring=input("Please Enter Function : ")
     file_name="Manual Function"
 input_var_num=input_num(inputstring)
+input_op_num=input_op(inputstring)
     
 
 timer_1=time.perf_counter()   # Start Time Of Analysis  
@@ -92,7 +93,7 @@ today_date=datetime.datetime.today() # Today Date And Local Time For Saving In P
 perf_time=str(timer_2-timer_1)+" Sec"
 print("Performance Time: "+perf_time) # Print Time Performance
 result_file=open("Perf_Result.txt","a") # Open Result File
-result_file.write(file_name+" : ,"+"Input Var Number: "+str(input_var_num)+"Elapsed Time: "+perf_time+"  "+str(today_date)+"\n") # Write Result In File
+result_file.write(file_name+" : ,"+"Input Var Number: "+str(input_var_num)+" Input Operation Number: "+str(sum(input_op_num))+" Elapsed Time: "+perf_time+"  "+str(today_date)+"\n") # Write Result In File
 result_file.close() # Close File
 
 #

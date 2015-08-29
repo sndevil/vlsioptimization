@@ -13,6 +13,27 @@ def input_num(input_str):
     except:
         print("Please Pass VLSI Object To Function")
         return None
+def input_op(input_str):
+
+
+    try:
+        counter=[0,0,0,0]
+        input_list=[]
+        for i in input_str:
+            if i==".":
+                counter[0]=counter[0]+1
+            elif i=="+":
+                counter[1]=counter[1]+1
+            elif i=="^":
+                counter[2]=counter[2]+1
+            elif i=="'":
+                counter[3]=counter[3]+1
+        return counter
+    except:
+        print("Error In Input")
+        return None
+                
+            
 def check_valid(input_string):
     '''
     (Str)->Boolean
