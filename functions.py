@@ -13,6 +13,7 @@ def input_num(input_str):
     except:
         print("Please Pass VLSI Object To Function")
         return None
+# This Function Count Boolean Operation In Input String Separately
 def input_op(input_str):
 
 
@@ -28,7 +29,7 @@ def input_op(input_str):
                 counter[2]=counter[2]+1
             elif i=="'":
                 counter[3]=counter[3]+1
-        return counter
+        return counter   # Return List
     except:
         print("Error In Input")
         return None
