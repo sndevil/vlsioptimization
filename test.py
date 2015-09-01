@@ -1,4 +1,5 @@
 from VLSI import *
+import platform
        
 #input the string to pass to VLSI object list
 input_command=input("Please Enter One Of This : \n 1.Test_Case1 \n 2.Test_Case2 \n 3.Test_Case3 \n Any Other : Manual Input \n")
@@ -24,7 +25,13 @@ input_var_num=input_num(inputstring)
 input_op_num=input_op(inputstring)
     
 
-timer_1=time.perf_counter()   # Start Time Of Analysis  
+timer_1=time.perf_counter()   # Start Time Of Analysis
+
+####
+#### do we want the time for the whole operation or the time just for
+#### calclulating the result and making the result?
+####
+
 start = -2
 end = -1
 indexcounter = 0
@@ -35,6 +42,7 @@ temp = inputstring
 temp.replace(" ",'')
 
 while (i < len(temp)):
+    
     if (temp[i] == ')'):
         end = i
         j = i
@@ -52,27 +60,35 @@ while (i < len(temp)):
         end = len(temp) - 1
         indexcounter += 1
         packname = ('#%d#' % indexcounter)
-        tempobject = VLSI(temp,packname)
+        tempobject = VLSI(temp,packname,len(VLSIlist))
         VLSIlist.append(tempobject)
         break
+            
         
-    if (start >= 0):
+    if (start >= 0):        
         indexcounter+=1
         temp1 = temp[start+1:end]
         packname = ('#%d#' % indexcounter) #    (a+b) -> #indexcounter# and is saved as a var 
-        tempobject = VLSI(temp1,packname)
+        tempobject = VLSI(temp1,packname,len(VLSIlist))
         VLSIlist.append(tempobject)
         temp = temp[:start]+('#%d#' % (indexcounter)) + temp[end+1:]
         start = -2
         end = -1
         i = 0
 
- 
+
     i+=1
 
 outstr = ''
 for i in inputs.strlist:
     outstr += i
+
+timer_2=time.perf_counter() # End Of Time Performance Counter
+today_date=datetime.datetime.today() # Today Date And Local Time For Saving In Performance Text File
+perf_time=str(timer_2-timer_1)+" Sec"
+print("Performance Time: "+perf_time) # Print Time Performance
+
+####  printing time must not be calculated in the run time
 
 print (outstr+ '   Out') 
 
@@ -88,15 +104,12 @@ for counter in range(0,2**(len(inputs.strlist))):
     outstr += '   ' + calculate_result()
     counter+=1
     print(outstr)
-timer_2=time.perf_counter() # End Of Time Performance Counter
-today_date=datetime.datetime.today() # Today Date And Local Time For Saving In Performance Text File
-perf_time=str(timer_2-timer_1)+" Sec"
-print("Performance Time: "+perf_time) # Print Time Performance
+
 result_file=open("Perf_Result.txt","a") # Open Result File
-result_file.write(file_name+" : ,"+"Input Var Number: "+str(input_var_num)+" Input Operation Number: "+str(sum(input_op_num))+" Elapsed Time: "+perf_time+"  "+str(today_date)+"\n") # Write Result In File
+result_file.write(file_name+" : ,"+"Input Var Number: "+str(input_var_num)+" Input Operation Number: "+str(sum(input_op_num))+" Elapsed Time: "+perf_time+"  "+str(today_date)+" CPU: "+platform.processor()+"\n") # Write Result In File
 result_file.close() # Close File
 
-#
+
 #print('Variables used:')
 #for k in range(0,len(varlist.varlist)):
 #        print(str(k))
@@ -110,19 +123,6 @@ result_file.close() # Close File
 #        print('string token:' + inputs.strlist[k])
 #        print()
 
-#print ('gates used:')
-#for i in range(0,indexcounter):
-#    print("input variables" + str(i) + ": " + str(VLSIlist[i].firstvar) + " , " + str(VLSIlist[i].secondvar) )
-#    print("output variable: " + str(VLSIlist[i].outputvar))
-#    if VLSIlist[i].funcindex == 0:
-#        print('func: or')
-#    if VLSIlist[i].funcindex == 1:
-#        print('func: and')
-#    if VLSIlist[i].funcindex == 2:
-#        print('func: xor')
-#    if VLSIlist[i].funcindex == 3:
-#        print('func: not')
-#    print ()
                         
 
 

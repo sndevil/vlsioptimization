@@ -23,7 +23,10 @@ def Xor(a,b):
         return None
 def Not(a):
     if a in [0,1]:
-        return not(a)
+        if (a == 0):
+            return 1
+        else:
+            return 0
     else:
         print("Input Is Not Boolean")
         return None

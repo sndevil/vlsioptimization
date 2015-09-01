@@ -13,6 +13,33 @@ class inputVars:
     strlist = []
     def __init__(self):
         pass
+
+class funcObject:
+    def __init__(self,firstvar,outputvar,secondvar=-1,funct=Not):
+        self.func = funct
+        self.firstvarptr = firstvar
+        self.secondvarptr = secondvar
+        self.output = outputvar
+        
+    def function(self,c,d):
+        if (self.func != Not):
+            return self.func(c,d)
+    def Notfunction(self,ar):
+        if (self.func == Not):
+            return self.func(ar)
+    def printobj(self):
+        toprint = ''
+        if (self.func == And):
+            toprint = "And"
+        elif (self.func == Or):
+            toprint = "Or"
+        elif (self.func == Xor):
+            toprint = "Xor"
+        elif (self.func == Not):
+            toprint = "Not"
+        print('gate: ' + toprint)             
+        
+        
     
 
 varlist = Variables()
@@ -21,18 +48,25 @@ inputs = inputVars()
 
 class VLSI:
 
+    variables = []
+    func = []
+
     firstvar = -1
     secondvar = -1
     outputvar = -1
 
     
-    def __init__(self,string,output):
+    def __init__(self,string,output,index):
         if check_valid(string):
-            #  print(string)
+
             self.input=string # Input String
             self.inputnum=input_num(string) # Add Input Number As Attribute
-
+            self.outputvar = self.handle_variable(output)
+            #print(str(self.outputvar))
             #checking for variables and functions in the passed string
+
+            
+            self.varcounter = 0
 
             start = 0
             end = -1
@@ -40,66 +74,98 @@ class VLSI:
             
             cursor = 0
             clone = string
+            clone.replace(" ","")
             #cloning input string
 
             #inputs should look like this:   (((a+b)+c)+d)
             #not supported yet:    (a+b+c+d)
-            
+
+            ## !a + !(c+a.d)
+
+            ## detecting and replacing NOTs with variables 
             while (1):
-                if clone[cursor] in "+.^":
+                if cursor == len(clone)-1:
+                    break
+                elif (clone[cursor] == "!"):
+                    start = cursor+1
+                    tempcursor = cursor +1
+                    while (1):
+                        if (tempcursor < len(clone)):
+                            if clone[tempcursor] in "+.^":
+                                break
+                            tempcursor += 1
+                        if (tempcursor == len(clone)):
+                            break
+
+                    end = tempcursor
+                    tonot = self.handle_variable(clone[start:end])
+                    packname = ('#%d' % index)+('#%d#' % self.varcounter)
+                    self.varcounter += 1
+                    output = self.handle_variable(packname)
+                    tempfuncobject = funcObject(firstvar = tonot,outputvar = output)
+                    self.func.append(tempfuncobject)
+                    clone = clone[0:start-1] + packname + clone[end:]
+                cursor += 1
+
+            cursor = 0
+            start = 0
+            while (1):
+                if cursor == len(clone) - 1:
+                    break
+                elif clone[cursor] in "+.^":
+                    if (clone[cursor] == '+'):
+                        tempfunc = Or
+                    elif (clone[cursor] == '.'):
+                        tempfunc = And
+                    elif (clone[cursor] == '^'):
+                        tempfunc = Xor
+                    else:
+                        tempfunc = And
+                    
                     end = cursor
                     #detect variable
                     temp1 = clone[start:end]
-                    temp2 = clone[end+1:]
-                    
-                    for i in range(0,len(varlist.strlist)):
-                        if (temp1 == varlist.strlist[i]): #first var exists
-                            self.firstvar = i #link to existing
-                        if (temp2 == varlist.strlist[i]):
-                            self.secondvar = i
-                        if (output == varlist.strlist[i]):
-                            self.outputvar = i
-                    if (self.firstvar == -1): #first var is a new var
-                        if (temp1[0] != '#'):
-                            inputs.ptrlist.append(len(varlist.strlist))
-                            inputs.strlist.append(temp1)
-                        varlist.strlist.append(temp1)
-                        varlist.varlist.append(0)
-                        self.firstvar = len(varlist.varlist) - 1
-                    if (self.secondvar == -1): #second var is a new var
-                        if (temp2[0] != '#'):
-                            inputs.ptrlist.append(len(varlist.strlist))
-                            inputs.strlist.append(temp2)
-                        varlist.strlist.append(temp2)
-                        varlist.varlist.append(0)
-                        self.secondvar = len(varlist.varlist) - 1
-                    if (self.outputvar == -1):
-                        varlist.strlist.append(output)
-                        varlist.varlist.append(0)
-                        self.outputvar = len(varlist.varlist) - 1
-    
-                    break
+                    tempcursor = cursor + 1
+                    while (clone[tempcursor] not in "+.^" and tempcursor != len(clone)-1):
+                        tempcursor += 1
+                    if (tempcursor == len(clone) -1):
+                        tempcursor += 1
+                    temp2 = clone[end+1:tempcursor]
+                    packname = ('#%d' % index)+('#%d#' % self.varcounter)
+                    self.varcounter+=1
+                    output = self.handle_variable(packname)
+                    first = self.handle_variable(temp1)
+                    second = self.handle_variable(temp2)
+                    tempfuncobject = funcObject(first,output,second,tempfunc)
+                    self.func.append(tempfuncobject)
+                    clone = clone[0:start] + packname + clone[tempcursor:]                       
+
+                    cursor = 0
+
+ 
                 cursor += 1
+
+            self.func[len(self.func)-1].output = self.outputvar
         
                     
             
-            if string.find('+')!=-1:
-                self.func = Or
-                self.funcindex = 0
-            elif string.find('.')!=-1:
-                self.func = And
-                self.funcindex = 1
-            elif string.find('^')!=-1:
-                self.func = Xor
-                self.funcindex = 2
-            elif string.find('!')!=-1:
-                self.func = Not
-                self.funcindex = 3
-            else:
-                self.func=None# Converted Boolean Function
-                self.funcindex = -1
-        else:
-            print("Please Enter Valid String")
+           
+        ##else:
+##            print("Please Enter Valid String")
+    def handle_variable(self,string):
+        for i in range(0,len(varlist.strlist)):
+            if (string == varlist.strlist[i]):
+                self.variables.append(i)
+                return i
+        if (string[0] != '#'):
+            inputs.ptrlist.append(len(varlist.strlist))
+            inputs.strlist.append(string)
+        varlist.strlist.append(string)
+        varlist.varlist.append(0)
+        self.variables.append(len(varlist.varlist) - 1)
+
+        return len(self.variables)-1
+    
     def __str__(self):
         #This Function Is For Show Object In Print Format
         return "VLSI("+self.input+")"
@@ -108,14 +174,25 @@ class VLSI:
         return "VLSI_Object(Input_String="+self.input+")"
 
     def function(self):
-        varlist.varlist[self.outputvar] = self.func(a = varlist.varlist[self.firstvar],b = varlist.varlist[self.secondvar])
+        result = 0
+        for i in range(0,len(self.func)):
+            temp = self.func[i]
+            in1 = self.variables[temp.firstvarptr]
+            out = self.variables[temp.output]
+            if (temp.func != Not):
+                varlist.varlist[out] = temp.function(varlist.varlist[in1],varlist.varlist[self.variables[temp.secondvarptr]])
+            else:
+                varlist.varlist[out] = temp.Notfunction(varlist.varlist[in1])
+        return 1
+            
 
 VLSIlist = []
 
 
 def calculate_result():
     for temp in VLSIlist:
-        temp.function()
+        while (not temp.function()):
+            pass
 
     return str(varlist.varlist[VLSIlist[len(VLSIlist)-1].outputvar])
         

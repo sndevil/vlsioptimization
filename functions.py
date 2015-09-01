@@ -41,7 +41,7 @@ def check_valid(input_string):
 '''
     try:
         for i in input_string:
-            if i not in string.ascii_letters+ string.digits +"'+^.()#":
+            if i not in string.ascii_letters+ string.digits +"'+^.() #!":
                 return False
         return True
     except:
