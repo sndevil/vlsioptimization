@@ -1,3 +1,4 @@
 Test_Case1.txt : ,Input Var Number: 4 Input Operation Number: 199 Elapsed Time: 0.7259549900136397 Sec  2015-08-29 22:10:29.099632
 Test_Case2.txt : ,Input Var Number: 3 Input Operation Number: 19 Elapsed Time: 0.2157521719034012 Sec  2015-08-29 22:10:49.375929
 Test_Case3.txt : ,Input Var Number: 6 Input Operation Number: 139 Elapsed Time: 1.5118508275020488 Sec  2015-08-29 22:11:01.623444
+Test_Case1.txt : ,Input Var Number: 4 Input Operation Number: 199 Elapsed Time: 0.5565560304818222 Sec  2015-09-01 13:00:05.773839 CPU: Intel64 Family 6 Model 55 Stepping 8, GenuineIntel
