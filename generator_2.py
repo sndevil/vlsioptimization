@@ -34,6 +34,9 @@ def generator(gate_list,not_off=True):
     temp_2=[] # Empty List
     while(len(temp)>2): # Do This While Until We Have Two Object Process
         i=0 # Counter
+        coin_not=randrange(0,2) # Random Number For Add Not At The End Of Each Paranteces
+        if coin_not==1: # Condition Of Not Adding
+            temp[i]=temp[i]+"'"  # Add Not To The First
         if len(temp)%2==0: # Even Length
             while((i+2)<=len(temp)):
                 op_index=operation[randrange(1,4)] # Generate Random Operation (-Not In This Version)
@@ -61,13 +64,17 @@ if __name__=="__main__":
         file=open(file_list[int(input_str)-1],'w')
         gate_number=input("Please Enter Number Of 2-Input Gates in File : ")
         var_number=input("Please Enter Total Number Of Var in File")
-        gate_form=Gate_Gen(int(gate_number),int(var_number))
-        print(gate_form)
-        gen_function=generator(gate_form)
-        file.write(gen_function)
-        file.close()
-        print("Function : "+gen_function)
-        print("Done!!")
+        try:
+            gate_form=Gate_Gen(int(gate_number),int(var_number))
+            print(gate_form)
+            gen_function=generator(gate_form)
+            file.write(gen_function)
+            file.close()
+            print("Function : "+gen_function)
+            print("Done!!")
+        except:
+            print("Wrong Number Inserted")
+            file.close()
         
     else:
         "Wrong Files Number"
