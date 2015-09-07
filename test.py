@@ -1,5 +1,7 @@
 from VLSI import *
+from parser import *
 import platform
+import globals
        
 #input the string to pass to VLSI object list
 input_command=input("Please Enter One Of This : \n 1.Test_Case1 \n 2.Test_Case2 \n 3.Test_Case3 \n Any Other : Manual Input \n")
@@ -23,87 +25,46 @@ else:
     file_name="Manual Function"
 input_var_num=input_num(inputstring)
 input_op_num=input_op(inputstring)
-    
+
+globals.init()
 
 timer_1=time.perf_counter()   # Start Time Of Analysis
 
-####
-#### do we want the time for the whole operation or the time just for
-#### calclulating the result and making the result?
-####
-
-start = -2
-end = -1
-indexcounter = 0
-i = 0
-j = 0
-
-temp = inputstring
-temp.replace(" ",'')
-
-while (i < len(temp)):
-    
-    if (temp[i] == ')'):
-        end = i
-        j = i
-        while (j >= 0):
-            if (temp[j] == '('):
-                start = j
-                break
-            else:
-                j-=1
-        
-        if (start < 0):
-            break
-    elif (i == len(temp) -1):
-        start = 0
-        end = len(temp) - 1
-        indexcounter += 1
-        packname = ('#%d#' % indexcounter)
-        tempobject = VLSI(temp,packname,len(VLSIlist))
-        VLSIlist.append(tempobject)
-        break
-            
-        
-    if (start >= 0):        
-        indexcounter+=1
-        temp1 = temp[start+1:end]
-        packname = ('#%d#' % indexcounter) #    (a+b) -> #indexcounter# and is saved as a var 
-        tempobject = VLSI(temp1,packname,len(VLSIlist))
-        VLSIlist.append(tempobject)
-        temp = temp[:start]+('#%d#' % (indexcounter)) + temp[end+1:]
-        start = -2
-        end = -1
-        i = 0
-
-
-    i+=1
-
-outstr = ''
-for i in inputs.strlist:
-    outstr += i
+parse_string(inputstring)
+make_table()
 
 timer_2=time.perf_counter() # End Of Time Performance Counter
 today_date=datetime.datetime.today() # Today Date And Local Time For Saving In Performance Text File
 perf_time=str(timer_2-timer_1)+" Sec"
 print("Performance Time: "+perf_time) # Print Time Performance
 
-####  printing time must not be calculated in the run time
+print_result()
 
-print (outstr+ '   Out') 
 
-for counter in range(0,2**(len(inputs.strlist))):
-    temp = counter
-    outstr = ''
-    for i in range(0,len(inputs.strlist)):
-        #inputstr = input(inputs.strlist[i] + " = ")
-        outstr += str(temp%2)
-        varlist.varlist[inputs.ptrlist[i]] = int(temp%2)
-        temp =int(temp/ 2)
+#print('Variables used:')
+#for k in range(0,len(globals.varlist.varlist)):
+#        print(str(k))
+#        print('value:' + str(globals.varlist.varlist[k]))
+#        print('string token:' + globals.varlist.strlist[k])
+#        print()
 
-    outstr += '   ' + calculate_result()
-    counter+=1
-    print(outstr)
+#print('VLSI objects:')
+#for temp in globals.VLSIlist:
+#    for funcs in temp.func:
+#        print('first: ' + str(temp.variables[funcs.firstvarptr]))
+#        print('second: ' + str(temp.variables[funcs.secondvarptr]))
+#        print('out: ' + str(temp.variables[funcs.output]))
+#        funcs.printobj()
+#        print('\n')
+#    print('next object\n')
+
+
+#for k in range(0,len(globals.inputs.strlist)):
+#        print(str(k))
+#        print('value:' + str(globals.inputs.ptrlist[k]))
+#        print('string token:' + globals.inputs.strlist[k])
+#        print()
+
 
 result_file=open("Perf_Result.txt","a") # Open Result File
 result_file.write(file_name+" : ,"+"Input Var Number: "+str(input_var_num)+" Input Operation Number: "+str(sum(input_op_num))+" Elapsed Time: "+perf_time+"  "+str(today_date)+" CPU: "+platform.processor()+"\n") # Write Result In File

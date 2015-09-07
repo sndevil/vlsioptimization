@@ -1,18 +1,9 @@
 from functions import * # Outside Of The Class Functions
 from logic import *
+
+import globals
 import time # Import Time Module For Counter Performance
 import datetime # Import Date And Time For Saving Result
-class Variables:
-    varlist = []
-    strlist = []
-    def __init__(self):
-        pass
-
-class inputVars:
-    ptrlist = []
-    strlist = []
-    def __init__(self):
-        pass
 
 class funcObject:
     def __init__(self,firstvar,outputvar,secondvar=-1,funct=Not):
@@ -35,15 +26,13 @@ class funcObject:
             toprint = "Or"
         elif (self.func == Xor):
             toprint = "Xor"
-        elif (self.func == Not):
+
+        if (self.func == Not):
             toprint = "Not"
         print('gate: ' + toprint)             
         
         
     
-
-varlist = Variables()
-inputs = inputVars()
     
 
 class VLSI:
@@ -61,7 +50,6 @@ class VLSI:
 
             self.input=string # Input String
             self.inputnum=input_num(string) # Add Input Number As Attribute
-            self.outputvar = self.handle_variable(output)
             #print(str(self.outputvar))
             #checking for variables and functions in the passed string
 
@@ -84,6 +72,10 @@ class VLSI:
 
             ## detecting and replacing NOTs with variables 
             while (1):
+                symbolcounter = 0
+                for i in range(0,len(clone)):
+                    if clone[i] in "+.^!":
+                        symbolcounter +=1
                 if cursor == len(clone)-1:
                     break
                 elif (clone[cursor] == "!"):
@@ -101,8 +93,13 @@ class VLSI:
                     tonot = self.handle_variable(clone[start:end])
                     packname = ('#%d' % index)+('#%d#' % self.varcounter)
                     self.varcounter += 1
-                    output = self.handle_variable(packname)
-                    tempfuncobject = funcObject(firstvar = tonot,outputvar = output)
+                    if (symbolcounter == 1):
+                        self.outputvar = self.handle_variable(output)
+                        out = self.outputvar
+                        packname = output
+                    else:
+                        out = self.handle_variable(packname)
+                    tempfuncobject = funcObject(firstvar = tonot,outputvar = out)
                     self.func.append(tempfuncobject)
                     clone = clone[0:start-1] + packname + clone[end:]
                 cursor += 1
@@ -110,6 +107,10 @@ class VLSI:
             cursor = 0
             start = 0
             while (1):
+                symbolcounter = 0
+                for i in range(0,len(clone)):
+                    if clone[i] in "+.^":
+                        symbolcounter +=1
                 if cursor == len(clone) - 1:
                     break
                 elif clone[cursor] in "+.^":
@@ -133,36 +134,40 @@ class VLSI:
                     temp2 = clone[end+1:tempcursor]
                     packname = ('#%d' % index)+('#%d#' % self.varcounter)
                     self.varcounter+=1
-                    output = self.handle_variable(packname)
+                    if symbolcounter == 1:
+                        self.outputvar = self.handle_variable(output)
+                        out = self.outputvar
+                        packname = output
+                    else:
+                        out = self.handle_variable(packname)
+                    
                     first = self.handle_variable(temp1)
                     second = self.handle_variable(temp2)
-                    tempfuncobject = funcObject(first,output,second,tempfunc)
+                    
+                    tempfuncobject = funcObject(first,out,second,tempfunc)
                     self.func.append(tempfuncobject)
                     clone = clone[0:start] + packname + clone[tempcursor:]                       
 
                     cursor = 0
 
- 
                 cursor += 1
-
-            self.func[len(self.func)-1].output = self.outputvar
-        
+                                
                     
             
            
         ##else:
 ##            print("Please Enter Valid String")
     def handle_variable(self,string):
-        for i in range(0,len(varlist.strlist)):
-            if (string == varlist.strlist[i]):
+        for i in range(0,len(globals.varlist.strlist)):
+            if (string == globals.varlist.strlist[i]):
                 self.variables.append(i)
-                return i
+                return len(self.variables)-1
         if (string[0] != '#'):
-            inputs.ptrlist.append(len(varlist.strlist))
-            inputs.strlist.append(string)
-        varlist.strlist.append(string)
-        varlist.varlist.append(0)
-        self.variables.append(len(varlist.varlist) - 1)
+            globals.inputs.ptrlist.append(len(globals.varlist.strlist))
+            globals.inputs.strlist.append(string)
+        globals.varlist.strlist.append(string)
+        globals.varlist.varlist.append(0)
+        self.variables.append(len(globals.varlist.varlist) - 1)
 
         return len(self.variables)-1
     
@@ -180,22 +185,12 @@ class VLSI:
             in1 = self.variables[temp.firstvarptr]
             out = self.variables[temp.output]
             if (temp.func != Not):
-                varlist.varlist[out] = temp.function(varlist.varlist[in1],varlist.varlist[self.variables[temp.secondvarptr]])
+                globals.varlist.varlist[out] = temp.function(globals.varlist.varlist[in1],globals.varlist.varlist[self.variables[temp.secondvarptr]])
             else:
-                varlist.varlist[out] = temp.Notfunction(varlist.varlist[in1])
+                globals.varlist.varlist[out] = temp.Notfunction(globals.varlist.varlist[in1])
         return 1
             
 
-VLSIlist = []
-
-
-def calculate_result():
-    for temp in VLSIlist:
-        while (not temp.function()):
-            pass
-
-    return str(varlist.varlist[VLSIlist[len(VLSIlist)-1].outputvar])
-        
     
     
 

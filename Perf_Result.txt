@@ -55,3 +55,16 @@ Manual Function : ,Input Var Number: 4 Input Operation Number: 4 Elapsed Time: 0
 Manual Function : ,Input Var Number: 1 Input Operation Number: 0 Elapsed Time: 8.721199992578477e-05 Sec  2015-09-01 18:26:54.631105 CPU: i386
 Manual Function : ,Input Var Number: 2 Input Operation Number: 3 Elapsed Time: 0.00020394300372572616 Sec  2015-09-01 18:27:12.814995 CPU: i386
 Manual Function : ,Input Var Number: 3 Input Operation Number: 4 Elapsed Time: 0.0002067500026896596 Sec  2015-09-01 18:27:38.862737 CPU: i386
+Manual Function : ,Input Var Number: 3 Input Operation Number: 5 Elapsed Time: 3.0456478509998988 Sec  2015-09-06 11:30:39.444196 CPU: i386
+Manual Function : ,Input Var Number: 3 Input Operation Number: 2 Elapsed Time: 2.502802050000014 Sec  2015-09-06 11:31:55.634300 CPU: i386
+Manual Function : ,Input Var Number: 1 Input Operation Number: 1 Elapsed Time: 0.2787627469999734 Sec  2015-09-06 11:33:17.155731 CPU: i386
+Manual Function : ,Input Var Number: 3 Input Operation Number: 3 Elapsed Time: 0.6780859069999678 Sec  2015-09-06 11:34:55.252336 CPU: i386
+Manual Function : ,Input Var Number: 2 Input Operation Number: 1 Elapsed Time: 0.6011174230000051 Sec  2015-09-07 22:55:15.918335 CPU: i386
+Manual Function : ,Input Var Number: 3 Input Operation Number: 3 Elapsed Time: 0.5832053720000658 Sec  2015-09-07 22:56:54.572171 CPU: i386
+Test_Case1.txt : ,Input Var Number: 7 Input Operation Number: 8 Elapsed Time: 9.882961582001371 Sec  2015-09-08 01:00:29.391093 CPU: i386
+Test_Case1.txt : ,Input Var Number: 7 Input Operation Number: 8 Elapsed Time: 0.015203474000372807 Sec  2015-09-08 01:06:25.775365 CPU: i386
+Test_Case3.txt : ,Input Var Number: 5 Input Operation Number: 401 Elapsed Time: 11.089438367000184 Sec  2015-09-08 01:07:01.907583 CPU: i386
+Test_Case3.txt : ,Input Var Number: 5 Input Operation Number: 401 Elapsed Time: 10.735523797999122 Sec  2015-09-08 01:08:58.821182 CPU: i386
+Test_Case3.txt : ,Input Var Number: 5 Input Operation Number: 401 Elapsed Time: 11.070198800000071 Sec  2015-09-08 01:10:18.449153 CPU: i386
+Test_Case3.txt : ,Input Var Number: 5 Input Operation Number: 401 Elapsed Time: 10.63692035799977 Sec  2015-09-08 01:11:17.430042 CPU: i386
+Test_Case1.txt : ,Input Var Number: 7 Input Operation Number: 8 Elapsed Time: 0.015768292998473044 Sec  2015-09-08 01:12:54.486193 CPU: i386
