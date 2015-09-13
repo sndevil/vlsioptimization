@@ -1,5 +1,5 @@
 from VLSI import *
-from parser import *
+from parser2 import *
 import platform
 import globals
        
@@ -31,12 +31,15 @@ globals.init()
 timer_1=time.perf_counter()   # Start Time Of Analysis
 
 parse_string(inputstring)
+timer_2=time.perf_counter()
 make_table()
-
-timer_2=time.perf_counter() # End Of Time Performance Counter
+timer_3=time.perf_counter()
+ # End Of Time Performance Counter
 today_date=datetime.datetime.today() # Today Date And Local Time For Saving In Performance Text File
-perf_time=str(timer_2-timer_1)+" Sec"
-print("Performance Time: "+perf_time) # Print Time Performance
+parser_perf_time=str(timer_2-timer_1)+" Sec"
+table_perf_time=str(timer_3-timer_2)+" Sec"
+print("Parser Performance Time: "+parser_perf_time) # Print Time Performance
+print("Table Maker Performance Time: "+table_perf_time) # Print Time Performance
 
 print_result()
 
@@ -66,9 +69,12 @@ print_result()
 #        print()
 
 
-result_file=open("Perf_Result.txt","a") # Open Result File
-result_file.write(file_name+" : ,"+"Input Var Number: "+str(input_var_num)+" Input Operation Number: "+str(sum(input_op_num))+" Elapsed Time: "+perf_time+"  "+str(today_date)+" CPU: "+platform.processor()+"\n") # Write Result In File
-result_file.close() # Close File
+result_file=open("Parser_Perf_Result.txt","a") # Open Result File
+result_file_2=open("Table_Perf_Result.txt","a")
+result_file.write(file_name+" : ,"+"Input Var Number: "+str(input_var_num)+" Input Operation Number: "+str(sum(input_op_num))+" Elapsed Time: "+parser_perf_time+"  "+str(today_date)+" CPU: "+platform.processor()+"\n") # Write Result In File
+result_file_2.write(file_name+" : ,"+"Input Var Number: "+str(input_var_num)+" Input Operation Number: "+str(sum(input_op_num))+" Elapsed Time: "+table_perf_time+"  "+str(today_date)+" CPU: "+platform.processor()+"\n") # Write Result In File
+result_file.close() # Close Parser Text File
+result_file_2.close() # Close Table Maker File
 
 
 #print('Variables used:')
