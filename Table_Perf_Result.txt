@@ -1,1 +1,7 @@
 Test_Case1.txt : ,Input Var Number: 7 Input Operation Number: 8 Elapsed Time: 0.21065785207709678 Sec  2015-09-13 22:54:00.539153 CPU: Intel64 Family 6 Model 55 Stepping 8, GenuineIntel
+Test_Case3.txt : ,Input Var Number: 5 Input Operation Number: 401 Elapsed Time: 11.875430719000178 Sec  2015-09-23 10:54:08.885158 CPU: i386
+Manual Function : ,Input Var Number: 3 Input Operation Number: 3 Elapsed Time: 0.007134217999919201 Sec  2015-09-23 11:26:21.435842 CPU: i386
+Manual Function : ,Input Var Number: 3 Input Operation Number: 3 Elapsed Time: 0.007300327999473666 Sec  2015-09-23 11:29:39.752115 CPU: i386
+Manual Function : ,Input Var Number: 3 Input Operation Number: 3 Elapsed Time: 0.00812018899978284 Sec  2015-09-23 11:30:47.560209 CPU: i386
+Manual Function : ,Input Var Number: 3 Input Operation Number: 3 Elapsed Time: 0.0074268150001444155 Sec  2015-09-23 11:33:52.875276 CPU: i386
+Manual Function : ,Input Var Number: 3 Input Operation Number: 3 Elapsed Time: 0.0037421890010591596 Sec  2015-09-23 12:54:45.057027 CPU: i386

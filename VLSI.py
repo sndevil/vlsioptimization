@@ -40,6 +40,7 @@ class VLSI:
     variables = []
     func = []
 
+    packname = ''
     firstvar = -1
     secondvar = -1
     outputvar = -1
@@ -65,8 +66,6 @@ class VLSI:
             clone.replace(" ","")
             #cloning input string
 
-            #inputs should look like this:   (((a+b)+c)+d)
-            #not supported yet:    (a+b+c+d)
 
             ## !a + !(c+a.d)
 
@@ -91,17 +90,17 @@ class VLSI:
 
                     end = tempcursor
                     tonot = self.handle_variable(clone[start:end])
-                    packname = ('#%d' % index)+('#%d#' % self.varcounter)
+                    self.packname = ('#%d' % index)+('#%d#' % self.varcounter)
                     self.varcounter += 1
                     if (symbolcounter == 1):
                         self.outputvar = self.handle_variable(output)
                         out = self.outputvar
-                        packname = output
+                        self.packname = output
                     else:
-                        out = self.handle_variable(packname)
+                        out = self.handle_variable(self.packname)
                     tempfuncobject = funcObject(firstvar = tonot,outputvar = out)
                     self.func.append(tempfuncobject)
-                    clone = clone[0:start-1] + packname + clone[end:]
+                    clone = clone[0:start-1] + self.packname + clone[end:]
                 cursor += 1
 
             cursor = 0
@@ -132,21 +131,21 @@ class VLSI:
                     if (tempcursor == len(clone) -1):
                         tempcursor += 1
                     temp2 = clone[end+1:tempcursor]
-                    packname = ('#%d' % index)+('#%d#' % self.varcounter)
+                    self.packname = ('#%d' % index)+('#%d#' % self.varcounter)
                     self.varcounter+=1
                     if symbolcounter == 1:
                         self.outputvar = self.handle_variable(output)
                         out = self.outputvar
-                        packname = output
+                        self.packname = output
                     else:
-                        out = self.handle_variable(packname)
+                        out = self.handle_variable(self.packname)
                     
                     first = self.handle_variable(temp1)
                     second = self.handle_variable(temp2)
                     
                     tempfuncobject = funcObject(first,out,second,tempfunc)
                     self.func.append(tempfuncobject)
-                    clone = clone[0:start] + packname + clone[tempcursor:]                       
+                    clone = clone[0:start] + self.packname + clone[tempcursor:]                       
 
                     cursor = 0
 
@@ -180,6 +179,7 @@ class VLSI:
 
     def function(self):
         result = 0
+        self.make_verilog()
         for i in range(0,len(self.func)):
             temp = self.func[i]
             in1 = self.variables[temp.firstvarptr]
@@ -189,10 +189,24 @@ class VLSI:
             else:
                 globals.varlist.varlist[out] = temp.Notfunction(globals.varlist.varlist[in1])
         return 1
-            
 
-    
-    
+    def make_verilog(self):
+        file_name = 'V' + self.packname.replace("#",'')
+        verilog_file=open('verilogs/' + file_name +'.v',"w")
+        verilog_file.write('module ' + file_name + ' (')
+        for v in range(0,len(self.variables)):
+            if (v != 0):
+                 verilog_file.write(' , ')
+            varname = globals.varlist.strlist[self.variables[v]]
+            if  (varname[0] == '#'):
+                varname = 'V'+varname
+            verilog_file.write(varname)
+        verilog_file.write('); \n')
+        
+        #for (f in self.func):
+#            f.
+        
+        verilog_file.close()
 
         
     
