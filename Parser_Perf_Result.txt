@@ -1,0 +1,1 @@
+Test_Case1.txt : ,Input Var Number: 7 Input Operation Number: 8 Elapsed Time: 0.005712973194208006 Sec  2015-09-13 22:54:00.539153 CPU: Intel64 Family 6 Model 55 Stepping 8, GenuineIntel
