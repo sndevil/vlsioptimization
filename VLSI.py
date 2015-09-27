@@ -37,8 +37,10 @@ class funcObject:
 
 class VLSI:
 
-    variables = []
-    func = []
+#    variables = []
+#    func = []
+#    inputs = []
+#    wires = []
 
     packname = ''
     firstvar = -1
@@ -48,7 +50,11 @@ class VLSI:
     
     def __init__(self,string,output,index):
         if check_valid(string):
-
+            self.inputs = []
+            self.wires = []
+            self.func = []
+            self.variables = []
+            
             self.input=string # Input String
             self.inputnum=input_num(string) # Add Input Number As Attribute
             #print(str(self.outputvar))
@@ -90,6 +96,7 @@ class VLSI:
 
                     end = tempcursor
                     tonot = self.handle_variable(clone[start:end])
+                    self.inputs.append(clone[start:end])
                     self.packname = ('#%d' % index)+('#%d#' % self.varcounter)
                     self.varcounter += 1
                     if (symbolcounter == 1):
@@ -98,6 +105,7 @@ class VLSI:
                         self.packname = output
                     else:
                         out = self.handle_variable(self.packname)
+                        self.wires.append(out)
                     tempfuncobject = funcObject(firstvar = tonot,outputvar = out)
                     self.func.append(tempfuncobject)
                     clone = clone[0:start-1] + self.packname + clone[end:]
@@ -125,12 +133,18 @@ class VLSI:
                     end = cursor
                     #detect variable
                     temp1 = clone[start:end]
+                    temp = clone[start:end]
+                    if (self.count_sharps(temp) <= 2):
+                        self.inputs.append(temp)
                     tempcursor = cursor + 1
                     while (clone[tempcursor] not in "+.^" and tempcursor != len(clone)-1):
                         tempcursor += 1
                     if (tempcursor == len(clone) -1):
                         tempcursor += 1
                     temp2 = clone[end+1:tempcursor]
+                    temp = temp2
+                    if (self.count_sharps(temp) <= 2):
+                        self.inputs.append(temp)
                     self.packname = ('#%d' % index)+('#%d#' % self.varcounter)
                     self.varcounter+=1
                     if symbolcounter == 1:
@@ -139,20 +153,23 @@ class VLSI:
                         self.packname = output
                     else:
                         out = self.handle_variable(self.packname)
+                        self.wires.append(out)
                     
                     first = self.handle_variable(temp1)
                     second = self.handle_variable(temp2)
                     
                     tempfuncobject = funcObject(first,out,second,tempfunc)
                     self.func.append(tempfuncobject)
-                    clone = clone[0:start] + self.packname + clone[tempcursor:]                       
+                    clone = clone[0:start] + self.packname + clone[tempcursor:]
 
                     cursor = 0
 
                 cursor += 1
+            #if (output[0] == '#'):
+#                output = 'V'+output
+            self.inputs.append(output)
                                 
                     
-            
            
         ##else:
 ##            print("Please Enter Valid String")
@@ -169,6 +186,12 @@ class VLSI:
         self.variables.append(len(globals.varlist.varlist) - 1)
 
         return len(self.variables)-1
+    def count_sharps(self,string):
+        counter = 0
+        for i in range(0,len(string)):
+            if (string[i] == '#'):
+                counter += 1
+        return counter
     
     def __str__(self):
         #This Function Is For Show Object In Print Format
@@ -194,18 +217,85 @@ class VLSI:
         file_name = 'V' + self.packname.replace("#",'')
         verilog_file=open('verilogs/' + file_name +'.v',"w")
         verilog_file.write('module ' + file_name + ' (')
-        for v in range(0,len(self.variables)):
+        for v in range(0,len(self.inputs)):
             if (v != 0):
                  verilog_file.write(' , ')
-            varname = globals.varlist.strlist[self.variables[v]]
-            if  (varname[0] == '#'):
-                varname = 'V'+varname
+#            varname = globals.varlist.strlist[self.variables[v]]
+            varname = self.inputs[v]
+            if (varname[0] == '#'):
+                varname = 'V' + varname
             verilog_file.write(varname)
         verilog_file.write('); \n')
+        for v in range(0,len(self.inputs)-1):
+            if (v == 0):
+                verilog_file.write('input ')
+            else:
+                verilog_file.write(' , ')
+            varname = self.inputs[v]
+            if (varname[0] == '#'):
+                varname = 'V' + varname
+            verilog_file.write(varname)
+
+        verilog_file.write(';\noutput ' + 'V' + self.inputs[len(self.inputs)-1] + ';\n')
+        if (len(self.wires) != 0):
+            verilog_file.write('wire ')
+            for w in range(0,len(self.wires)):
+                if (w != 0):
+                    verilog_file.write(' , ')
+ #             wirename = globals.varlist.strlist(self.wires[w])
+                verilog_file.write('W'+globals.varlist.strlist[self.wires[w]])
+
+            verilog_file.write(';\n\n')
+
         
-        #for (f in self.func):
-#            f.
-        
+        for i in range(0,len(self.func)):
+
+            firstflag = -1
+            secondflag = -1
+            outflag = -1
+
+            
+            f = self.func[i]
+            outstr = globals.varlist.strlist[self.variables[f.output]]
+            firststr = globals.varlist.strlist[self.variables[f.firstvarptr]]
+            secondstr = f.secondvarptr
+            if (secondstr != -1):
+                secondstr = globals.varlist.strlist[self.variables[secondstr]]
+            else:
+                secondstr = "~"
+            for j in self.inputs:
+                if (outstr == j):
+                    outstr = 'V'+outstr
+                    outflag = 1
+                if (firststr == j):
+                    if (firststr[0] == '#'):
+                        firststr = 'V'+firststr
+                    firstflag = 1
+                if (secondstr == j):
+                    if (secondstr[0] == '#'):
+                        secondstr = 'V'+secondstr
+                    secondflag = 1
+
+            if (firstflag != 1):
+                firststr = 'W' + firststr
+            if (secondflag != 1):
+                secondstr = 'W' + secondstr
+            if (outflag != 1):
+                if (outstr == self.inputs[len(self.inputs)-1]):
+                    outstr = 'V' + outstr
+                else:
+                    outstr = 'W' + outstr
+                
+            if (f.func == And):
+                verilog_file.write(('and f%d ('% i) + outstr + ' , ' + firststr + ' , ' + secondstr + ');\n')  
+            elif (f.func == Or):
+                verilog_file.write(('or f%d ('% i) + outstr + ' , ' + firststr + ' , ' + secondstr + ');\n')
+            elif (f.func == Xor):
+                verilog_file.write(('xor f%d ('% i) + outstr + ' , ' + firststr + ' , ' + secondstr + ');\n')
+            elif (f.func == Not):
+                verilog_file.write(('not f%d ('% i) + outstr + ' , ' + firststr +  ');\n')
+               
+        verilog_file.write('endmodule')
         verilog_file.close()
 
         

@@ -1,1 +1,5 @@
-module V2 (V#0#0# , a , b , V#1# , V#0#0# , c , a , V#1#0# , V#2# , V#1# , V#1#0#) 
+module V2 (c , d , V#2#); 
+input c , d;
+output V#2#;
+or f0 (V#2# , c , d);
+endmodule
