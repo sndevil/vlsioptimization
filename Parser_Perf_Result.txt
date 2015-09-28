@@ -34,3 +34,10 @@ Manual Function : ,Input Var Number: 4 Input Operation Number: 3 Elapsed Time: 0
 Manual Function : ,Input Var Number: 4 Input Operation Number: 3 Elapsed Time: 0.00023283900009118952 Sec  2015-09-27 18:37:57.824547 CPU: i386
 Manual Function : ,Input Var Number: 4 Input Operation Number: 3 Elapsed Time: 0.00024702899918338517 Sec  2015-09-27 18:41:33.755991 CPU: i386
 Manual Function : ,Input Var Number: 4 Input Operation Number: 4 Elapsed Time: 0.00030289500045910245 Sec  2015-09-27 18:44:32.989592 CPU: i386
+Manual Function : ,Input Var Number: 3 Input Operation Number: 4 Elapsed Time: 0.00042171000001189896 Sec  2015-09-28 12:25:00.569284 CPU: i386
+Manual Function : ,Input Var Number: 3 Input Operation Number: 4 Elapsed Time: 0.0003096339999046904 Sec  2015-09-28 12:40:31.397039 CPU: i386
+Manual Function : ,Input Var Number: 3 Input Operation Number: 4 Elapsed Time: 0.0003408410000247386 Sec  2015-09-28 12:42:36.901124 CPU: i386
+Manual Function : ,Input Var Number: 3 Input Operation Number: 4 Elapsed Time: 0.0003218849999484519 Sec  2015-09-28 12:46:01.243511 CPU: i386
+Manual Function : ,Input Var Number: 3 Input Operation Number: 4 Elapsed Time: 0.0003394829998342175 Sec  2015-09-28 12:47:09.028353 CPU: i386
+Manual Function : ,Input Var Number: 3 Input Operation Number: 4 Elapsed Time: 0.0006435279999550403 Sec  2015-09-28 12:49:26.012449 CPU: i386
+Manual Function : ,Input Var Number: 3 Input Operation Number: 4 Elapsed Time: 0.00031336799997916387 Sec  2015-09-28 12:50:26.715790 CPU: i386

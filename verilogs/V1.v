@@ -1,8 +1,8 @@
-module V1 (b , a , V#1#); 
-input b , a;
-output V#1#;
-wire W#0#0#;
+module V1 (b , c , V1); 
+input b , c;
+output V1;
+wire W00;
 
-not f0 (W#0#0# , b);
-and f1 (V#1# , W#0#0# , a);
+not f0 (W00 , b);
+xor f1 (V1 , c , W00);
 endmodule
