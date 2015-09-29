@@ -105,7 +105,7 @@ class VLSI:
                         self.packname = output
                     else:
                         out = self.handle_variable(self.packname)
-                        self.wires.append(out)
+                    self.wires.append(out)
                     tempfuncobject = funcObject(firstvar = tonot,outputvar = out)
                     self.func.append(tempfuncobject)
                     clone = clone[0:start-1] + self.packname + clone[end:]
@@ -178,14 +178,13 @@ class VLSI:
             if (string == globals.varlist.strlist[i]):
                 self.variables.append(i)
                 return len(self.variables)-1
-        if (string[0] != '#'):
+        if (not('#' in string)):
             globals.inputs.ptrlist.append(len(globals.varlist.strlist))
             globals.inputs.strlist.append(string)
         globals.varlist.strlist.append(string)
         globals.varlist.varlist.append(0)
         self.variables.append(len(globals.varlist.varlist) - 1)
-
-        return len(self.variables)-1
+        return len(self.variables) - 1
     def count_sharps(self,string):
         counter = 0
         for i in range(0,len(string)):
@@ -214,7 +213,7 @@ class VLSI:
         return 1
 
     def make_verilog(self):
-        file_name = 'V' + self.packname.replace("#",'')
+        file_name = 'F' + self.packname.replace("#",'')
         verilog_file=open('verilogs/' + file_name +'.v',"w")
         verilog_file.write('module ' + file_name + ' (')
         for v in range(0,len(self.inputs)):
@@ -223,7 +222,7 @@ class VLSI:
 #            varname = globals.varlist.strlist[self.variables[v]]
             varname = self.inputs[v]
             if ('#' in varname):
-                varname = 'V' + varname.replace('#','')
+                varname = 'V' + varname.replace('#','V')
            # if (varname[0] == '#'):
  #               varname = 'V' + varname.replace('#','')
             verilog_file.write(varname)
@@ -235,17 +234,17 @@ class VLSI:
                 verilog_file.write(' , ')
             varname = self.inputs[v]
             if ('#' in varname):
-                varname = 'V' + varname.replace('#','')
+                varname = 'V' + varname.replace('#','V')
             verilog_file.write(varname)
 
-        verilog_file.write(';\noutput ' + 'V' + self.inputs[len(self.inputs)-1].replace('#','') + ';\n')
+        verilog_file.write(';\noutput ' + 'V' + self.inputs[len(self.inputs)-1].replace('#','V') + ';\n')
         if (len(self.wires) != 0):
             verilog_file.write('wire ')
             for w in range(0,len(self.wires)):
                 if (w != 0):
                     verilog_file.write(' , ')
  #             wirename = globals.varlist.strlist(self.wires[w])
-                verilog_file.write('W'+globals.varlist.strlist[self.wires[w]].replace('#',''))
+                verilog_file.write('W'+globals.varlist.strlist[self.variables[self.wires[w]]].replace('#','W'))
 
             verilog_file.write(';\n\n')
 
@@ -267,26 +266,26 @@ class VLSI:
                 secondstr = "~"
             for j in self.inputs:
                 if (outstr == j):
-                    outstr = 'V'+outstr.replace('#','')
+                    outstr = 'V'+outstr.replace('#','V')
                     outflag = 1
                 if (firststr == j):
                     if ('#' in firststr):
-                        firststr = 'V'+firststr.replace('#','')
+                        firststr = 'V'+firststr.replace('#','V')
                     firstflag = 1
                 if (secondstr == j):
                     if ('#' in secondstr):
-                        secondstr = 'V'+secondstr.replace('#','')
+                        secondstr = 'V'+secondstr.replace('#','V')
                     secondflag = 1
 
             if (firstflag != 1):
-                firststr = 'W' + firststr.replace('#','')
+                firststr = 'W' + firststr.replace('#','W')
             if (secondflag != 1):
-                secondstr = 'W' + secondstr.replace('#','')
+                secondstr = 'W' + secondstr.replace('#','W')
             if (outflag != 1):
                 if (outstr == self.inputs[len(self.inputs)-1]):
-                    outstr = 'V' + outstr.replace('#','')
+                    outstr = 'V' + outstr.replace('#','W')
                 else:
-                    outstr = 'W' + outstr.replace('#','')
+                    outstr = 'W' + outstr.replace('#','W')
 
             if (f.func == And):
                 verilog_file.write(('and f%d ('% i) + outstr + ' , ' + firststr + ' , ' + secondstr + ');\n')  
