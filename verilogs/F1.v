@@ -1,5 +1,8 @@
-module F1 (a , b , VV1V); 
-input a , b;
+module F1 (a , t , c , VV1V); 
+input a , t , c;
 output VV1V;
-or f0 (VV1V , a , b);
+wire WW0W0W;
+
+and f0 (WW0W0W , a , t);
+xor f1 (VV1V , WW0W0W , c);
 endmodule

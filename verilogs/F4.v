@@ -1,5 +1,8 @@
-module F4 (VV2V , VV3V , VV4V); 
-input VV2V , VV3V;
+module F4 (t , b , VV4V); 
+input t , b;
 output VV4V;
-and f0 (VV4V , VV2V , VV3V);
+wire WW3W0W;
+
+not f0 (WW3W0W , t);
+or f1 (VV4V , b , WW3W0W);
 endmodule

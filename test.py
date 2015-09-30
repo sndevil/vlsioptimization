@@ -41,7 +41,10 @@ table_perf_time=str(timer_3-timer_2)+" Sec"
 print("Parser Performance Time: "+parser_perf_time) # Print Time Performance
 print("Table Maker Performance Time: "+table_perf_time) # Print Time Performance
 
+make_script_files()
+
 print_result()
+
 
 
 #print('Variables used:')
