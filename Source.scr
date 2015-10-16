@@ -1,0 +1,10 @@
+set power_preserve_rtl_hier_names "true"
+analyze -format verilog {./source/Verilogs/f1.v ./source/Verilogs/f2.v ./source/Verilogs/f3.v ./source/Verilogs/f4.v}
+elaborate F1
+link
+uniquify -force
+compile -map_effort medium
+change_names -rules verilog -hierarchy
+write -format verilog -hierarchy -output F1_syn.v
+uplevel #0 { report_power -analysis_effort low } > ./Power/F1.txt
+uplevel #0 { report_area -nosplit } > ./Area/F1.txt

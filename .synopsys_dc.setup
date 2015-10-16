@@ -1,0 +1,17 @@
+set search_path [list . /opt/Synopsys/DC/libraries/syn \
+                       /opt/Synopsys/DC/dw/syn_ver \
+                       /opt/Synopsys/DC/dw/sim_ver ]
+
+
+set link_library  /home/icic/lib/slow.db                
+set target_library /home/icic/lib/slow.db
+set symbol_library /home/icic/lib/tsmc18.sdb
+
+# verilog 
+
+set verilogout_no_tri true
+
+# Read Symbol 
+
+set edifin_lib_route_grid 1024
+set vhdlout_use_packages [list IEEE.std_logic_1164, IEEE.std_logic_arith, IEEE.std_logic_textio, vtvtlib25.components]
