@@ -10,9 +10,16 @@ class inputVars:
     def __init__(self):
         pass
 
+class Details:
+    area = []
+    power = []
+    timing = []
+    leakage = []
+
 def init():
-    global varlist, inputs, VLSIlist,table
+    global varlist, inputs, VLSIlist,table,feedback
     varlist = Variables()
     inputs = inputVars()
     VLSIlist = []
     table = []
+    feedback = Details()

@@ -41,10 +41,20 @@ table_perf_time=str(timer_3-timer_2)+" Sec"
 print("Parser Performance Time: "+parser_perf_time) # Print Time Performance
 print("Table Maker Performance Time: "+table_perf_time) # Print Time Performance
 
+###      while (1):
+
 make_script_files()
 
-print_result()
+###     run the scripts
+print_result() ## this should be commented
 
+read_results()
+
+
+### do the proccessing
+
+
+###      while end
 
 
 #print('Variables used:')

@@ -70,3 +70,49 @@ def make_script_files():
         script_file.write('uplevel #0 { report_power -analysis_effort low } > ../Power/' + verilog_name +'.txt\n')
         script_file.write('uplevel #0 { report_area -nosplit } > ../Area/'+ verilog_name +'.txt\n')
         script_file.close()
+
+
+def read_results():
+    for t in globals.VLSIlist:
+        name = 'F' + t.packname.replace("#",'')
+        area_file=open('../Area/' + name +'.txt',"r")
+        power_file=open('../Power/' + name + '.txt',"r")
+        report_file=open('../Timing/' + name + '.txt',"r")
+
+        t = ''
+        while ('Total cell area:' not in t):
+            t = area_file.readline()
+        t = t[16:len(t)-2]
+        for i in range(0,len(t)):
+            if t[i] != ' ':
+                break
+        t = t[i:]
+        area = float(t)
+        globals.feedback.area.append(area)
+
+        t = ''
+        while ('Total Dynamic Power' not in t):
+            t = power_file.readline()
+        t = t[20:len(t)-12]
+        for i in range(0,len(t)):
+            if t[i] != ' ' and t[i] != '=':
+                break
+        t = t[i:]
+        power = float(t)
+        globals.feedback.power.append(power)
+        power_file.readline()
+        t = power_file.readline()
+        for i in range(19,len(t)):
+            if t[i] != ' ' and t[i] != '=':
+                break
+        t = t[i:len(t)-3]
+        leak = float(t)
+        globals.feedback.leakage.append(leak)
+
+        area_file.close()
+        power_file.close()
+        report_file.close()
+        
+        
+        
+                
