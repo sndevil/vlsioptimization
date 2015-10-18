@@ -1,0 +1,10 @@
+set power_preserve_rtl_hier_names "true"
+analyze -format verilog { ../source/Verilogs/F16.v}
+elaborate F16
+link
+uniquify -force
+compile -map_effort medium
+change_names -rules verilog -hierarchy
+write -format verilog -hierarchy -output ../netlist/F16.v
+uplevel #0 { report_power -analysis_effort low } > ../Power/F16.txt
+uplevel #0 { report_area -nosplit } > ../Area/F16.txt

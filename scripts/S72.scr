@@ -1,0 +1,10 @@
+set power_preserve_rtl_hier_names "true"
+analyze -format verilog { ../source/Verilogs/F72.v}
+elaborate F72
+link
+uniquify -force
+compile -map_effort medium
+change_names -rules verilog -hierarchy
+write -format verilog -hierarchy -output ../netlist/F72.v
+uplevel #0 { report_power -analysis_effort low } > ../Power/F72.txt
+uplevel #0 { report_area -nosplit } > ../Area/F72.txt

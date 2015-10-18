@@ -2,21 +2,16 @@ from VLSI import *
 from parser2 import *
 import platform
 import globals
-       
+import os       
 #input the string to pass to VLSI object list
-input_command=input("Please Enter One Of This : \n 1.Test_Case1 \n 2.Test_Case2 \n 3.Test_Case3 \n Any Other : Manual Input \n")
-if int(input_command)==1:
-    file=open("Test_Case1.txt","r")
-    file_name=file.name
-    inputstring=file.read()
-    file.close()
-elif int(input_command)==2:
-    file=open("Test_Case2.txt","r")
-    file_name=file.name
-    inputstring=file.read()
-    file.close()
-elif int(input_command)==3:
-    file=open("Test_Case3.txt","r")
+current_dir=os.getcwd()
+test_dir=current_dir+"\\Test"
+test_files=os.listdir(test_dir)
+for i in range(len(test_files)):
+    print(i+1,test_files[i])
+input_command=input("Please Enter One Of This Files Number : (*Any Other = Manual Input) \n")
+if int(input_command)<=len(test_files):
+    file=open(test_dir+"\\"+test_files[i-1],"r")
     file_name=file.name
     inputstring=file.read()
     file.close()

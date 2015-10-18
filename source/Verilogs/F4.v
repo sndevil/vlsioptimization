@@ -1,8 +1,5 @@
-module F4 (t , a , c , VV4V); 
-input t , a , c;
+module F4 (d , a , VV4V); 
+input d , a;
 output VV4V;
-wire WW3W0W;
-
-or f0 (WW3W0W , t , a);
-and f1 (VV4V , WW3W0W , c);
+xor f0 (VV4V , d , a);
 endmodule

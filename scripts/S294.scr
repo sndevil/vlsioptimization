@@ -1,0 +1,10 @@
+set power_preserve_rtl_hier_names "true"
+analyze -format verilog { ../source/Verilogs/F294.v}
+elaborate F294
+link
+uniquify -force
+compile -map_effort medium
+change_names -rules verilog -hierarchy
+write -format verilog -hierarchy -output ../netlist/F294.v
+uplevel #0 { report_power -analysis_effort low } > ../Power/F294.txt
+uplevel #0 { report_area -nosplit } > ../Area/F294.txt
