@@ -1,5 +1,9 @@
-module F3 (a , c , VV3V); 
-input a , c;
+module F3 (a , d , c , VV3V); 
+input a , d , c;
 output VV3V;
-xor f0 (VV3V , a , c);
+wire WW2W0W , WW2W1W;
+
+not f0 (WW2W0W , a);
+and f1 (WW2W1W , d , c);
+xor f2 (VV3V , WW2W1W , WW2W0W);
 endmodule

@@ -49,6 +49,7 @@ make_script_files()
 ###     run the scripts
 print_result() ## this should be commented
 
+run_scripts()
 ###  read_results()
 ###  not yet needed
 

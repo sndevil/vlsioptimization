@@ -1,5 +1,6 @@
 import string
 import globals
+import subprocess
 valid_input=[1,0,True,False] # Valid Input For Boolean Functions
 def input_num(input_str):
     '''
@@ -114,6 +115,12 @@ def read_results():
         power_file.close()
         report_file.close()
         
-        
-        
-                
+def run_scripts():
+    commandtext = 'cd ..; dc_shell-xg-t; set_app_var link_library "/ICIC/180/TSMC/LIB/synopsys/slow.db"; set_app_var target_library "/ICIC/180/TSMC/LIB/synopsys/slow.db"; set_app_var symbol_library "/ICIC/180/TSMC/LIB/synopsys/tsmc18.sdb";'
+    for s in globals.VLSIlist:
+        file_name = 'S' + globals.VLSIlist[0].packname.replace("#",'')
+        commandtext += 'source scripts/'+file_name+'.scr; '
+    print(commandtext)
+    process = subprocess.Popen(commandtext,stdout=subprocess.PIPE, shell=True)
+    proc_stdout = process.communicate()[0].strip()
+    print(proc_stdout)
