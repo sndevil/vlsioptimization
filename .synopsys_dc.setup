@@ -3,9 +3,9 @@ set search_path [list . /opt/Synopsys/DC/libraries/syn \
                        /opt/Synopsys/DC/dw/sim_ver ]
 
 
-set link_library  /home/icic/lib/slow.db                
-set target_library /home/icic/lib/slow.db
-set symbol_library /home/icic/lib/tsmc18.sdb
+set_app_var link_library "/ICIC/180/TSMC/LIB/synopsys/slow.db"
+set_app_var target_library "/ICIC/180/TSMC/LIB/synopsys/slow.db"
+set_app_var symbol_library "/ICIC/180/TSMC/LIB/synopsys/tsmc18.sdb"
 
 # verilog 
 

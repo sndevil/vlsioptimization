@@ -5,10 +5,10 @@ import globals
 import os       
 #input the string to pass to VLSI object list
 current_dir=os.getcwd()
-test_dir=current_dir+"\\Test"
+test_dir=current_dir+"/Test"
 test_files=os.listdir(test_dir)
 for i in range(len(test_files)):
-    test_file=open(test_dir+"\\"+test_files[i],"r")
+    test_file=open(test_dir+"/"+test_files[i],"r")
     inputstring=test_file.read()
     input_var_num=input_num(inputstring)
     input_op_num=input_op(inputstring)
@@ -16,8 +16,8 @@ for i in range(len(test_files)):
     print(i+1,test_files[i],input_var_num,input_op_num)
 input_command=input("Please Enter One Of This Files Number : (*Any Other = Manual Input) \n")
 if int(input_command)<=len(test_files):
-    file=open(test_dir+"\\"+test_files[int(input_command)-1],"r")
-    print(test_dir+"\\"+test_files[int(input_command)-1])
+    file=open(test_dir+"/"+test_files[int(input_command)-1],"r")
+    print(test_dir+"/"+test_files[int(input_command)-1])
     file_name=file.name
     inputstring=file.read()
     file.close()
@@ -49,7 +49,8 @@ make_script_files()
 ###     run the scripts
 print_result() ## this should be commented
 
-read_results()
+###  read_results()
+###  not yet needed
 
 
 ### do the proccessing
