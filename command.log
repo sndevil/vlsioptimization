@@ -1,6 +1,6 @@
 #@ # 
 #@ # Running dc_shell Version D-2010.03-SP5-3 for linux -- Mar 17, 2011
-#@ # Date:   %sMon Nov  2 11:55:45 2015
+#@ # Date:   %sSun Nov  8 17:28:57 2015
 #@ # Run by: Rezayi@Microelectronic.lab.edu
 #@ 
 
@@ -4698,4 +4698,66 @@ source /home/Rezayi/vlsioptimization/.synopsys_dc.setup
 #@ set edifin_lib_route_grid 1024
 #@ set vhdlout_use_packages [list IEEE.std_logic_1164, IEEE.std_logic_arith, IEEE.std_logic_textio, vtvtlib25.components]
 #@ # -- End source /home/Rezayi/vlsioptimization/.synopsys_dc.setup
+
+source Source.scr
+#@ set_app_var link_library "/ICIC/180/TSMC/LIB/synopsys/slow.db"
+#@ set_app_var target_library "/ICIC/180/TSMC/LIB/synopsys/slow.db"
+#@ set_app_var target_library "/ICIC/180/TSMC/LIB/synopsys/slow.db"
+#@ source scripts/S1.scr
+#@ set power_preserve_rtl_hier_names "true"
+#@ analyze -format verilog { source/Verilogs/F1.v}
+#@ elaborate F1
+#@ link
+#@ uniquify -force
+#@ compile -map_effort medium
+#@ change_names -rules verilog -hierarchy
+#@ write -format verilog -hierarchy -output netlist/F1.v
+#@ uplevel #0 { report_power -analysis_effort low } > Power/F1.txt
+#@ uplevel #0 { report_area -nosplit } > Area/F1.txt
+#@ compile_ultra -gate_clock -no_autoungroup > Timing/F1.txt
+#@ # -- End source scripts/S1.scr
+
+#@ source scripts/S2.scr
+#@ set power_preserve_rtl_hier_names "true"
+#@ analyze -format verilog { source/Verilogs/F2.v}
+#@ elaborate F2
+#@ link
+#@ uniquify -force
+#@ compile -map_effort medium
+#@ change_names -rules verilog -hierarchy
+#@ write -format verilog -hierarchy -output netlist/F2.v
+#@ uplevel #0 { report_power -analysis_effort low } > Power/F2.txt
+#@ uplevel #0 { report_area -nosplit } > Area/F2.txt
+#@ compile_ultra -gate_clock -no_autoungroup > Timing/F2.txt
+#@ # -- End source scripts/S2.scr
+
+#@ source scripts/S3.scr
+#@ set power_preserve_rtl_hier_names "true"
+#@ analyze -format verilog { source/Verilogs/F3.v}
+#@ elaborate F3
+#@ link
+#@ uniquify -force
+#@ compile -map_effort medium
+#@ change_names -rules verilog -hierarchy
+#@ write -format verilog -hierarchy -output netlist/F3.v
+#@ uplevel #0 { report_power -analysis_effort low } > Power/F3.txt
+#@ uplevel #0 { report_area -nosplit } > Area/F3.txt
+#@ compile_ultra -gate_clock -no_autoungroup > Timing/F3.txt
+#@ # -- End source scripts/S3.scr
+
+#@ source scripts/S4.scr
+#@ set power_preserve_rtl_hier_names "true"
+#@ analyze -format verilog { source/Verilogs/F4.v}
+#@ elaborate F4
+#@ link
+#@ uniquify -force
+#@ compile -map_effort medium
+#@ change_names -rules verilog -hierarchy
+#@ write -format verilog -hierarchy -output netlist/F4.v
+#@ uplevel #0 { report_power -analysis_effort low } > Power/F4.txt
+#@ uplevel #0 { report_area -nosplit } > Area/F4.txt
+#@ compile_ultra -gate_clock -no_autoungroup > Timing/F4.txt
+#@ # -- End source scripts/S4.scr
+
+#@ # -- End source Source.scr
 

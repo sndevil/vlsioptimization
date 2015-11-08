@@ -1,9 +1,10 @@
 
-module F3 ( a, c, VV3V );
-  input a, c;
+module F3 ( d, a, c, VV3V );
+  input d, a, c;
   output VV3V;
+  wire   n2;
 
-
-  XOR2X1 U2 ( .A(c), .B(a), .Y(VV3V) );
+  XOR2X1 U3 ( .A(d), .B(n2), .Y(VV3V) );
+  NOR2X1 U4 ( .A(a), .B(c), .Y(n2) );
 endmodule
 

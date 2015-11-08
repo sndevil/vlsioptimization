@@ -72,3 +72,10 @@ Manual Function : ,Input Var Number: 4 Input Operation Number: 5 Elapsed Time: 0
 Manual Function : ,Input Var Number: 4 Input Operation Number: 8 Elapsed Time: 0.000915000000532018 Sec  2015-11-02 11:38:58.597083 CPU: x86_64
 Manual Function : ,Input Var Number: 4 Input Operation Number: 8 Elapsed Time: 0.0009099999988393392 Sec  2015-11-02 11:40:30.069128 CPU: x86_64
 Manual Function : ,Input Var Number: 4 Input Operation Number: 8 Elapsed Time: 0.00035799999932351056 Sec  2015-11-02 11:53:07.389636 CPU: x86_64
+Manual Function : ,Input Var Number: 2 Input Operation Number: 1 Elapsed Time: 0.00013200001558288932 Sec  2015-11-08 16:43:28.696814 CPU: x86_64
+Manual Function : ,Input Var Number: 2 Input Operation Number: 1 Elapsed Time: 0.0001479999627918005 Sec  2015-11-08 16:46:38.727606 CPU: x86_64
+Manual Function : ,Input Var Number: 2 Input Operation Number: 1 Elapsed Time: 5.199998850002885e-05 Sec  2015-11-08 16:48:37.037950 CPU: x86_64
+Manual Function : ,Input Var Number: 2 Input Operation Number: 1 Elapsed Time: 5.100003909319639e-05 Sec  2015-11-08 17:12:54.404294 CPU: x86_64
+Manual Function : ,Input Var Number: 2 Input Operation Number: 1 Elapsed Time: 5.199998850002885e-05 Sec  2015-11-08 17:18:07.666305 CPU: x86_64
+Manual Function : ,Input Var Number: 2 Input Operation Number: 1 Elapsed Time: 7.999996887519956e-05 Sec  2015-11-08 17:26:03.878990 CPU: x86_64
+Manual Function : ,Input Var Number: 6 Input Operation Number: 8 Elapsed Time: 0.0014770000125281513 Sec  2015-11-08 17:28:55.480597 CPU: x86_64

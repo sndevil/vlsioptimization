@@ -1,6 +1,6 @@
 import string
 import globals
-import subprocess
+import shlex, subprocess
 valid_input=[1,0,True,False] # Valid Input For Boolean Functions
 def input_num(input_str):
     '''
@@ -56,6 +56,10 @@ def func_creator(obj):
 
 
 def make_script_files():
+    source_file = open('../Source.scr','w')
+    source_file.write('set_app_var link_library "/ICIC/180/TSMC/LIB/synopsys/slow.db"\n')
+    source_file.write('set_app_var target_library "/ICIC/180/TSMC/LIB/synopsys/slow.db"\n')
+    source_file.write('set_app_var target_library "/ICIC/180/TSMC/LIB/synopsys/slow.db"\n')
     for t in globals.VLSIlist:
         file_name = 'S' + t.packname.replace("#",'')
         verilog_name = 'F'+ t.packname.replace('#','')
@@ -72,7 +76,8 @@ def make_script_files():
         script_file.write('uplevel #0 { report_area -nosplit } > Area/'+ verilog_name +'.txt\n')
         script_file.write('compile_ultra -gate_clock -no_autoungroup > Timing/'+ verilog_name+'.txt')
         script_file.close()
-
+        source_file.write('source scripts/'+ file_name+'.scr\n')
+    source_file.close()
 
 def read_results():
     for t in globals.VLSIlist:
@@ -116,11 +121,20 @@ def read_results():
         report_file.close()
         
 def run_scripts():
-    commandtext = 'cd ..; dc_shell-xg-t; set_app_var link_library "/ICIC/180/TSMC/LIB/synopsys/slow.db"; set_app_var target_library "/ICIC/180/TSMC/LIB/synopsys/slow.db"; set_app_var symbol_library "/ICIC/180/TSMC/LIB/synopsys/tsmc18.sdb";'
-    for s in globals.VLSIlist:
-        file_name = 'S' + globals.VLSIlist[0].packname.replace("#",'')
-        commandtext += 'source scripts/'+file_name+'.scr; '
-    print(commandtext)
-    process = subprocess.Popen(commandtext,stdout=subprocess.PIPE, shell=True)
-    proc_stdout = process.communicate()[0].strip()
-    print(proc_stdout)
+    #commandtext = 'cd ..; dc_shell-xg-t; set_app_var link_library "/ICIC/180/TSMC/LIB/synopsys/slow.db"; set_app_var target_library "/ICIC/180/TSMC/LIB/synopsys/slow.db"; set_app_var symbol_library "/ICIC/180/TSMC/LIB/synopsys/tsmc18.sdb";'
+    #commandtext = 'dc_shell-xg-t'
+    commands = []
+    commands.append('dc_shell-xg-t')
+    commands.append('-x')
+    commands.append('"source Source.scr"')
+    #args = shlex.split(commandtext)
+    #commands.append(args)
+    #args = shlex.split('set_app_var link_library "/ICIC/180/TSMCIB/synopsys/slow.db";')
+    #commands.append(args)
+    #for s in globals.VLSIlist:
+    #    file_name = 'S' + globals.VLSIlist[0].packname.replace("#",'')
+    #    commandtext += 'source scripts/'+file_name+'.scr; 
+    print(commands)
+    process = subprocess.Popen('cd ..; dc_shell-xg-t -x "source Source.scr";', shell=True)
+    #proc_stdout = process.communicate()[0].strip()
+    #print(proc_stdout)

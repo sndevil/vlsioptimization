@@ -1,0 +1,178 @@
+Alib files are up-to-date.
+Warning: DesignWare synthetic library dw_foundation.sldb is added to the synthetic_library in the current command. (UISN-40)
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library       |      Version       | Available |
+============================================================================
+| Basic DW Building Blocks                | D-2010.03-DWBB_1010 |    *     |
+| Licensed DW Building Blocks             | D-2010.03-DWBB_1010 |    *     |
+============================================================================
+
+Information: Sequential output inversion is enabled.  SVF file must be used for formal verification. (OPT-1208)
+
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'F2'
+Memory usage for J2 task 107 Mbytes -- main task 107 Mbytes.
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+Information: Skipping clock gating on design F2, since there are no registers. (PWR-806)
+
+  Beginning Mapping Optimizations  (Ultra High effort)
+  -------------------------------
+
+   ELAPSED            WORST NEG TOTAL NEG  DESIGN                            
+    TIME      AREA      SLACK     SLACK   RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:02      26.6      0.00       0.0       0.0                          
+    0:00:02      26.6      0.00       0.0       0.0                          
+    0:00:02      26.6      0.00       0.0       0.0                          
+    0:00:02      26.6      0.00       0.0       0.0                          
+  Re-synthesis Optimization (Phase 1)
+  Re-synthesis Optimization (Phase 2)
+  Global Optimization (Phase 1)
+  Global Optimization (Phase 2)
+  Global Optimization (Phase 3)
+  Global Optimization (Phase 4)
+  Global Optimization (Phase 5)
+  Global Optimization (Phase 6)
+  Global Optimization (Phase 7)
+  Global Optimization (Phase 8)
+  Global Optimization (Phase 9)
+  Global Optimization (Phase 10)
+  Global Optimization (Phase 11)
+  Global Optimization (Phase 12)
+  Global Optimization (Phase 13)
+  Global Optimization (Phase 14)
+  Global Optimization (Phase 15)
+  Global Optimization (Phase 16)
+  Global Optimization (Phase 17)
+  Global Optimization (Phase 18)
+  Global Optimization (Phase 19)
+  Global Optimization (Phase 20)
+  Global Optimization (Phase 21)
+  Global Optimization (Phase 22)
+  Global Optimization (Phase 23)
+  Global Optimization (Phase 24)
+  Global Optimization (Phase 25)
+  Global Optimization (Phase 26)
+  Global Optimization (Phase 27)
+  Global Optimization (Phase 28)
+
+
+
+  Beginning Delay Optimization Phase
+  ----------------------------------
+
+   ELAPSED            WORST NEG TOTAL NEG  DESIGN                            
+    TIME      AREA      SLACK     SLACK   RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:02      26.6      0.00       0.0       0.0                          
+    0:00:02      26.6      0.00       0.0       0.0                          
+    0:00:02      26.6      0.00       0.0       0.0                          
+    0:00:02      26.6      0.00       0.0       0.0                          
+    0:00:02      26.6      0.00       0.0       0.0                          
+    0:00:02      26.6      0.00       0.0       0.0                          
+    0:00:02      26.6      0.00       0.0       0.0                          
+    0:00:02      26.6      0.00       0.0       0.0                          
+    0:00:02      26.6      0.00       0.0       0.0                          
+    0:00:02      26.6      0.00       0.0       0.0                          
+    0:00:02      26.6      0.00       0.0       0.0                          
+
+  Beginning Sequential Optimization
+  ---------------------------------
+    0:00:02      26.6      0.00       0.0       0.0                          
+    0:00:02      26.6      0.00       0.0       0.0                          
+
+  Beginning Delay Optimization
+  ----------------------------
+    0:00:02      26.6      0.00       0.0       0.0                          
+    0:00:02      26.6      0.00       0.0       0.0                          
+    0:00:02      26.6      0.00       0.0       0.0                          
+    0:00:02      26.6      0.00       0.0       0.0                          
+
+  Beginning Sequential Optimization
+  ---------------------------------
+    0:00:02      26.6      0.00       0.0       0.0                          
+    0:00:02      26.6      0.00       0.0       0.0                          
+
+  Beginning Delay Optimization
+  ----------------------------
+    0:00:02      26.6      0.00       0.0       0.0                          
+    0:00:02      26.6      0.00       0.0       0.0                          
+    0:00:02      26.6      0.00       0.0       0.0                          
+    0:00:02      26.6      0.00       0.0       0.0                          
+
+  Beginning Sequential Optimization
+  ---------------------------------
+    0:00:02      26.6      0.00       0.0       0.0                          
+    0:00:02      26.6      0.00       0.0       0.0                          
+    0:00:02      26.6      0.00       0.0       0.0                          
+    0:00:02      26.6      0.00       0.0       0.0                          
+    0:00:02      26.6      0.00       0.0       0.0                          
+Loaded alib file './alib-52/slow.db.alib'
+    0:00:03      26.6      0.00       0.0       0.0                          
+    0:00:03      26.6      0.00       0.0       0.0                          
+
+   ELAPSED            WORST NEG TOTAL NEG  DESIGN                            
+    TIME      AREA      SLACK     SLACK   RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:03      26.6      0.00       0.0       0.0                          
+    0:00:03      26.6      0.00       0.0       0.0                          
+
+
+  Beginning Area-Recovery Phase  (max_area 0)
+  -----------------------------
+
+   ELAPSED            WORST NEG TOTAL NEG  DESIGN                            
+    TIME      AREA      SLACK     SLACK   RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:04      26.6      0.00       0.0       0.0                          
+  Global Optimization (Phase 1)
+  Global Optimization (Phase 2)
+  Global Optimization (Phase 3)
+  Global Optimization (Phase 4)
+  Global Optimization (Phase 1)
+  Global Optimization (Phase 2)
+  Global Optimization (Phase 3)
+  Global Optimization (Phase 4)
+  Global Optimization (Phase 5)
+  Global Optimization (Phase 6)
+  Global Optimization (Phase 7)
+  Global Optimization (Phase 8)
+  Global Optimization (Phase 9)
+  Global Optimization (Phase 10)
+    0:00:04      26.6      0.00       0.0       0.0                          
+    0:00:04      26.6      0.00       0.0       0.0                          
+    0:00:04      26.6      0.00       0.0       0.0                          
+    0:00:04      26.6      0.00       0.0       0.0                          
+    0:00:04      26.6      0.00       0.0       0.0                          
+    0:00:04      26.6      0.00       0.0       0.0                          
+    0:00:04      26.6      0.00       0.0       0.0                          
+    0:00:04      26.6      0.00       0.0       0.0                          
+    0:00:04      26.6      0.00       0.0       0.0                          
+    0:00:04      26.6      0.00       0.0       0.0                          
+    0:00:04      26.6      0.00       0.0       0.0                          
+    0:00:04      26.6      0.00       0.0       0.0                          
+
+  Beginning Delay Optimization
+  ----------------------------
+    0:00:04      26.6      0.00       0.0       0.0                          
+    0:00:04      26.6      0.00       0.0       0.0                          
+    0:00:04      26.6      0.00       0.0       0.0                          
+    0:00:04      26.6      0.00       0.0       0.0                          
+
+  Beginning Delay Optimization
+  ----------------------------
+    0:00:04      26.6      0.00       0.0       0.0                          
+    0:00:04      26.6      0.00       0.0       0.0                          
+    0:00:04      26.6      0.00       0.0       0.0                          
+    0:00:04      26.6      0.00       0.0       0.0                          
+Loading db file '/ICIC/180/TSMC/LIB/synopsys/slow.db'
+
+  Optimization Complete
+  ---------------------
+1

@@ -1,9 +1,9 @@
  
 ****************************************
 Report : area
-Design : F1
+Design : F3
 Version: D-2010.03-SP5-3
-Date   : Sun Nov  8 17:29:03 2015
+Date   : Sun Nov  8 17:29:18 2015
 ****************************************
 
 Library(s) Used:
@@ -15,10 +15,10 @@ Number of nets:                 5
 Number of cells:                2
 Number of references:           2
 
-Combinational area:         19.958400
+Combinational area:         36.590401
 Noncombinational area:       0.000000
 Net Interconnect area:      undefined  (No wire load specified)
 
-Total cell area:            19.958400
+Total cell area:            36.590401
 Total area:                 undefined
 1

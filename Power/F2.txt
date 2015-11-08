@@ -7,9 +7,9 @@ Warning: Design has unannotated primary inputs. (PWR-414)
 ****************************************
 Report : power
         -analysis_effort low
-Design : F1
+Design : F2
 Version: D-2010.03-SP5-3
-Date   : Sun Nov  8 17:29:03 2015
+Date   : Sun Nov  8 17:29:10 2015
 ****************************************
 
 
@@ -31,11 +31,11 @@ Power-specific unit information :
     Leakage Power Units = 1pW
 
 
-  Cell Internal Power  =   1.6425 uW   (75%)
-  Net Switching Power  = 559.2820 nW   (25%)
+  Cell Internal Power  =   5.4280 uW  (100%)
+  Net Switching Power  =   0.0000 mW    (0%)
                          ---------
-Total Dynamic Power    =   2.2018 uW  (100%)
+Total Dynamic Power    =   5.4280 uW  (100%)
 
-Cell Leakage Power     = 369.2110 pW
+Cell Leakage Power     =   1.4968 nW
 
 1

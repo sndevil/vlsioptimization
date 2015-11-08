@@ -1,9 +1,10 @@
 
-module F4 ( VV2V, VV3V, VV4V );
-  input VV2V, VV3V;
+module F4 ( VV2V, p, v, VV3V, VV4V );
+  input VV2V, p, v, VV3V;
   output VV4V;
+  wire   n2;
 
-
-  AND2X1 U2 ( .A(VV3V), .B(VV2V), .Y(VV4V) );
+  NOR2BX1 U3 ( .AN(VV3V), .B(n2), .Y(VV4V) );
+  NOR3X1 U4 ( .A(VV2V), .B(v), .C(p), .Y(n2) );
 endmodule
 
