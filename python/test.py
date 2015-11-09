@@ -52,7 +52,7 @@ print_result() ## this should be commented
 run_scripts()
 ###  read_results()
 ###  not yet needed
-
+print('running finished')
 
 ### do the proccessing
 

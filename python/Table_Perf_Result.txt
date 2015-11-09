@@ -81,3 +81,6 @@ Manual Function : ,Input Var Number: 2 Input Operation Number: 1 Elapsed Time: 0
 Manual Function : ,Input Var Number: 2 Input Operation Number: 1 Elapsed Time: 0.0006500000017695129 Sec  2015-11-08 17:18:07.666305 CPU: x86_64
 Manual Function : ,Input Var Number: 2 Input Operation Number: 1 Elapsed Time: 0.000610999995842576 Sec  2015-11-08 17:26:03.878990 CPU: x86_64
 Manual Function : ,Input Var Number: 6 Input Operation Number: 8 Elapsed Time: 0.08159099996555597 Sec  2015-11-08 17:28:55.480597 CPU: x86_64
+Manual Function : ,Input Var Number: 6 Input Operation Number: 12 Elapsed Time: 0.07504200004041195 Sec  2015-11-09 12:23:45.151338 CPU: x86_64
+/home/Rezayi/vlsioptimization/python/Test/Test_Case6.txt : ,Input Var Number: 5 Input Operation Number: 79 Elapsed Time: 0.42429199995240197 Sec  2015-11-09 12:26:45.630702 CPU: x86_64
+Manual Function : ,Input Var Number: 2 Input Operation Number: 1 Elapsed Time: 0.0009339999523945153 Sec  2015-11-09 12:41:24.271984 CPU: x86_64

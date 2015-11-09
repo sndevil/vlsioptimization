@@ -74,9 +74,9 @@ def make_script_files():
         script_file.write('write -format verilog -hierarchy -output '+ 'netlist/' + verilog_name + '.v\n')
         script_file.write('uplevel #0 { report_power -analysis_effort low } > Power/' + verilog_name +'.txt\n')
         script_file.write('uplevel #0 { report_area -nosplit } > Area/'+ verilog_name +'.txt\n')
-        script_file.write('compile_ultra -gate_clock -no_autoungroup > Timing/'+ verilog_name+'.txt')
         script_file.close()
         source_file.write('source scripts/'+ file_name+'.scr\n')
+    source_file.write('exit')
     source_file.close()
 
 def read_results():
@@ -121,20 +121,5 @@ def read_results():
         report_file.close()
         
 def run_scripts():
-    #commandtext = 'cd ..; dc_shell-xg-t; set_app_var link_library "/ICIC/180/TSMC/LIB/synopsys/slow.db"; set_app_var target_library "/ICIC/180/TSMC/LIB/synopsys/slow.db"; set_app_var symbol_library "/ICIC/180/TSMC/LIB/synopsys/tsmc18.sdb";'
-    #commandtext = 'dc_shell-xg-t'
-    commands = []
-    commands.append('dc_shell-xg-t')
-    commands.append('-x')
-    commands.append('"source Source.scr"')
-    #args = shlex.split(commandtext)
-    #commands.append(args)
-    #args = shlex.split('set_app_var link_library "/ICIC/180/TSMCIB/synopsys/slow.db";')
-    #commands.append(args)
-    #for s in globals.VLSIlist:
-    #    file_name = 'S' + globals.VLSIlist[0].packname.replace("#",'')
-    #    commandtext += 'source scripts/'+file_name+'.scr; 
-    print(commands)
-    process = subprocess.Popen('cd ..; dc_shell-xg-t -x "source Source.scr";', shell=True)
-    #proc_stdout = process.communicate()[0].strip()
-    #print(proc_stdout)
+    print('running scripts')
+    process = subprocess.Popen('cd ..; dc_shell-xg-t -x "source Source.scr"; rm [F]*;', shell=True)
