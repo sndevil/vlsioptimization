@@ -34,7 +34,7 @@ class funcObject:
         
     
     
-
+    
 class VLSI:
 
 #    variables = []
@@ -174,10 +174,10 @@ class VLSI:
         ##else:
 ##            print("Please Enter Valid String")
     def handle_variable(self,string):
-        for i in range(0,len(globals.varlist.strlist)):
-            if (string == globals.varlist.strlist[i]):
-                self.variables.append(i)
-                return len(self.variables)-1
+        if string in globals.varlist.strlist:
+            i=globals.varlist.strlist.index(string)
+            self.variables.append(i)
+            return len(self.variables)-1
         if (not('#' in string)):
             globals.inputs.ptrlist.append(len(globals.varlist.strlist))
             globals.inputs.strlist.append(string)
@@ -186,10 +186,7 @@ class VLSI:
         self.variables.append(len(globals.varlist.varlist) - 1)
         return len(self.variables) - 1
     def count_sharps(self,string):
-        counter = 0
-        for i in range(0,len(string)):
-            if (string[i] == '#'):
-                counter += 1
+        counter=string.count("#")
         return counter
     
     def __str__(self):
