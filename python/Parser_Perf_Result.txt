@@ -82,3 +82,4 @@ Manual Function : ,Input Var Number: 6 Input Operation Number: 8 Elapsed Time: 0
 Manual Function : ,Input Var Number: 6 Input Operation Number: 12 Elapsed Time: 0.0014230000087991357 Sec  2015-11-09 12:23:45.151338 CPU: x86_64
 /home/Rezayi/vlsioptimization/python/Test/Test_Case6.txt : ,Input Var Number: 5 Input Operation Number: 79 Elapsed Time: 0.012748000037390739 Sec  2015-11-09 12:26:45.630702 CPU: x86_64
 Manual Function : ,Input Var Number: 2 Input Operation Number: 1 Elapsed Time: 0.00013200001558288932 Sec  2015-11-09 12:41:24.271984 CPU: x86_64
+C:\Users\sepand\Desktop\VLSI2\vlsioptimization\python/Test/Test_Case1.txt : ,Input Var Number: 7 Input Operation Number: 8 Elapsed Time: 0.001113484170423573 Sec  2016-02-21 01:44:33.274672 CPU: Intel64 Family 6 Model 55 Stepping 8, GenuineIntel

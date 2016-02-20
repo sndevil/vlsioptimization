@@ -2,18 +2,21 @@ from VLSI import *
 from parser2 import *
 import platform
 import globals
-import os       
+import os
+import multiprocessing as mu
 #input the string to pass to VLSI object list
 current_dir=os.getcwd()
 test_dir=current_dir+"/Test"
 test_files=os.listdir(test_dir)
-for i in range(len(test_files)):
-    test_file=open(test_dir+"/"+test_files[i],"r")
+def test_file_print(arg):
+    test_file=open(test_dir+"/"+arg,"r")
     inputstring=test_file.read()
     input_var_num=input_num(inputstring)
     input_op_num=input_op(inputstring)
     test_file.close()
-    print(i+1,test_files[i],input_var_num,input_op_num)
+    print(test_files.index(arg),arg,input_var_num,input_op_num)
+print(list(map(test_file_print,test_files)))
+    
 input_command=input("Please Enter One Of This Files Number : (*Any Other = Manual Input) \n")
 if int(input_command)<=len(test_files):
     file=open(test_dir+"/"+test_files[int(input_command)-1],"r")

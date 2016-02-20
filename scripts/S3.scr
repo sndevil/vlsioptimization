@@ -8,4 +8,3 @@ change_names -rules verilog -hierarchy
 write -format verilog -hierarchy -output netlist/F3.v
 uplevel #0 { report_power -analysis_effort low } > Power/F3.txt
 uplevel #0 { report_area -nosplit } > Area/F3.txt
-compile_ultra -gate_clock -no_autoungroup > Timing/F3.txt
