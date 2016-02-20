@@ -1,0 +1,9 @@
+1- New Error In Test is in Print Part
+
+2- Run Synopsys And Check It Outputs
+
+3- Write Code For Convert Table To Boolean Function
+
+4- Write Code For Convert Boolean Function To Verilog
+
+5- Write Code For Convert Boolean Function To VHDL

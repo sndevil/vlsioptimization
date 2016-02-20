@@ -1,0 +1,24 @@
+ 
+****************************************
+Report : area
+Design : F2
+Version: D-2010.03-SP5-3
+Date   : Sun Nov  8 17:29:10 2015
+****************************************
+
+Library(s) Used:
+
+    slow (File: /ICIC/180/TSMC/LIB/synopsys/slow.db)
+
+Number of ports:                3
+Number of nets:                 3
+Number of cells:                1
+Number of references:           1
+
+Combinational area:         26.611200
+Noncombinational area:       0.000000
+Net Interconnect area:      undefined  (No wire load specified)
+
+Total cell area:            26.611200
+Total area:                 undefined
+1
