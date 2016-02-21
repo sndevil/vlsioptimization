@@ -3,7 +3,7 @@ from parser2 import *
 import platform
 import globals
 import os
-import multiprocessing as mu
+
 #input the string to pass to VLSI object list
 current_dir=os.getcwd()
 test_dir=current_dir+"/Test"
@@ -16,11 +16,13 @@ def test_file_print(arg):
     test_file.close()
     print(test_files.index(arg),arg,input_var_num,input_op_num)
 print(list(map(test_file_print,test_files)))
-    
-input_command=input("Please Enter One Of This Files Number : (*Any Other = Manual Input) \n")
-if int(input_command)<=len(test_files):
-    file=open(test_dir+"/"+test_files[int(input_command)-1],"r")
-    print(test_dir+"/"+test_files[int(input_command)-1])
+try:    
+    input_command=int(input("Please Enter One Of This Files Number : (*Any Other = Manual Input) \n"))
+except ValueError:
+    input_command=1
+if input_command<=len(test_files):
+    file=open(test_dir+"/"+test_files[input_command-1],"r")
+    print(test_dir+"/"+test_files[input_command-1])
     file_name=file.name
     inputstring=file.read()
     file.close()
@@ -29,6 +31,8 @@ else:
     file_name="Manual Function"
 input_var_num=input_num(inputstring)
 input_op_num=input_op(inputstring)
+
+    
 
 globals.init()
 

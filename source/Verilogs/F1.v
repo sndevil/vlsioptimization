@@ -1,5 +1,5 @@
-module F1 (d , r , VV1V); 
-input d , r;
+module F1 (f , j , VV1V); 
+input f , j;
 output VV1V;
-and f0 (VV1V , d , r);
+or f0 (VV1V , f , j);
 endmodule
