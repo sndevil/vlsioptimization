@@ -1,5 +1,5 @@
-module F31 (e , b , VV31V); 
-input e , b;
+module F31 (b , a , VV31V); 
+input b , a;
 output VV31V;
-or f0 (VV31V , e , b);
+xor f0 (VV31V , b , a);
 endmodule

@@ -3,7 +3,8 @@ from parser2 import *
 import platform
 import globals
 import os
-
+import sys
+from functions import *
 #input the string to pass to VLSI object list
 current_dir=os.getcwd()
 test_dir=current_dir+"/Test"
@@ -15,7 +16,12 @@ def test_file_print(arg):
     input_op_num=input_op(inputstring)
     test_file.close()
     print(test_files.index(arg),arg,input_var_num,input_op_num)
-print(list(map(test_file_print,test_files)))
+file_list=list(map(test_file_print,test_files))
+if len(file_list)!=0:
+    print(file_list)
+else:
+    print("There is no test file!!!!")
+    sys.exit()
 try:    
     input_command=int(input("Please Enter One Of This Files Number : (*Any Other = Manual Input) \n"))
 except ValueError:

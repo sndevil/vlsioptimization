@@ -1,5 +1,5 @@
-module F17 (a , e , VV17V); 
-input a , e;
+module F17 (d , c , VV17V); 
+input d , c;
 output VV17V;
-xor f0 (VV17V , a , e);
+and f0 (VV17V , d , c);
 endmodule

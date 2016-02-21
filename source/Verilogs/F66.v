@@ -1,5 +1,5 @@
-module F66 (a , c , VV66V); 
-input a , c;
+module F66 (d , b , VV66V); 
+input d , b;
 output VV66V;
-xor f0 (VV66V , a , c);
+or f0 (VV66V , d , b);
 endmodule

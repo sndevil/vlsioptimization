@@ -1,5 +1,9 @@
-module F54 (e , b , VV54V); 
-input e , b;
+module F54 (c , a , VV54V); 
+input c , a;
 output VV54V;
-and f0 (VV54V , e , b);
+wire WW53W0W , WW53W1W;
+
+not f0 (WW53W0W , c);
+not f1 (WW53W1W , a);
+or f2 (VV54V , WW53W0W , WW53W1W);
 endmodule

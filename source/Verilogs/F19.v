@@ -1,5 +1,8 @@
-module F19 (c , e , VV19V); 
-input c , e;
+module F19 (d , b , VV19V); 
+input d , b;
 output VV19V;
-or f0 (VV19V , c , e);
+wire WW18W0W;
+
+not f0 (WW18W0W , d);
+and f1 (VV19V , WW18W0W , b);
 endmodule

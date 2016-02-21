@@ -1,5 +1,5 @@
-module F23 (b , c , VV23V); 
-input b , c;
+module F23 (d , c , VV23V); 
+input d , c;
 output VV23V;
-and f0 (VV23V , b , c);
+or f0 (VV23V , d , c);
 endmodule

@@ -1,5 +1,5 @@
-module F42 (d , e , VV42V); 
-input d , e;
+module F42 (b , d , VV42V); 
+input b , d;
 output VV42V;
-or f0 (VV42V , d , e);
+or f0 (VV42V , b , d);
 endmodule

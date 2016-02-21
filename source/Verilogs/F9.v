@@ -1,5 +1,9 @@
-module F9 (a , d , VV9V); 
-input a , d;
+module F9 (b , d , VV9V); 
+input b , d;
 output VV9V;
-and f0 (VV9V , a , d);
+wire WW8W0W , WW8W1W;
+
+not f0 (WW8W0W , b);
+not f1 (WW8W1W , d);
+or f2 (VV9V , WW8W0W , WW8W1W);
 endmodule

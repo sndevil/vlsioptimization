@@ -1,5 +1,9 @@
-module F11 (c , e , VV11V); 
-input c , e;
+module F11 (a , d , VV11V); 
+input a , d;
 output VV11V;
-xor f0 (VV11V , c , e);
+wire WW10W0W , WW10W1W;
+
+not f0 (WW10W0W , a);
+not f1 (WW10W1W , d);
+or f2 (VV11V , WW10W0W , WW10W1W);
 endmodule

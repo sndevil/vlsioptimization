@@ -1,5 +1,9 @@
-module F27 (d , e , VV27V); 
-input d , e;
+module F27 (c , a , VV27V); 
+input c , a;
 output VV27V;
-or f0 (VV27V , d , e);
+wire WW26W0W , WW26W1W;
+
+not f0 (WW26W0W , c);
+not f1 (WW26W1W , a);
+xor f2 (VV27V , WW26W0W , WW26W1W);
 endmodule

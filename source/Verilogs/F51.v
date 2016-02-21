@@ -1,5 +1,8 @@
-module F51 (a , b , VV51V); 
-input a , b;
+module F51 (a , d , VV51V); 
+input a , d;
 output VV51V;
-or f0 (VV51V , a , b);
+wire WW50W0W;
+
+not f0 (WW50W0W , a);
+or f1 (VV51V , WW50W0W , d);
 endmodule

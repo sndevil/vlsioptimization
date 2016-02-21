@@ -1,6 +1,6 @@
 from VLSI import *
 import globals
-
+import sys
 def make_table():
     for counter in range(0,2**(len(globals.inputs.strlist))):
         temp = counter
@@ -29,60 +29,67 @@ def print_result():
         print(outstr)
 
 def calculate_result():
-    for temp in globals.VLSIlist:
-        while (not temp.function()):
- #           output = temp.func[len(temp.func)-1].output
-            pass
-    temp = globals.VLSIlist[len(globals.VLSIlist)-1]
-    return str(globals.varlist.varlist[temp.variables[temp.func[len(temp.func)-1].output]])
+    try:
+        for temp in globals.VLSIlist:
+            while (not temp.function()):
+ #              output = temp.func[len(temp.func)-1].output
+                pass
+        temp = globals.VLSIlist[len(globals.VLSIlist)-1]
+        return str(globals.varlist.varlist[temp.variables[temp.func[len(temp.func)-1].output]])
+    except:
+        print("Bad String Input")
+        sys.exit()
         
 
 
 
 def parse_string(inputstring):
-    
-    start = -2
-    end = -1
-    indexcounter = 0
-    i = 0
-    j = 0
+    try:
+        start = -2
+        end = -1
+        indexcounter = 0
+        i = 0
+        j = 0
 
-    temp = inputstring
-    temp.replace(" ",'')
+        temp = inputstring
+        temp.replace(" ",'')
 
-    while (i < len(temp)):
+        while (i < len(temp)):
     
-        if (temp[i] == ')'):
-            end = i
-            j = i
-            while (j >= 0):
-                if (temp[j] == '('):
-                    start = j
-                    break
-                else:
-                    j-=1
+            if (temp[i] == ')'):
+                end = i
+                j = i
+                while (j >= 0):
+                    if (temp[j] == '('):
+                        start = j
+                        break
+                    else:
+                        j-=1
             
-            if (start < 0):
+                if (start < 0):
+                    break
+            elif (i == len(temp) -1):
+                start = 0
+                end = len(temp) - 1
+                indexcounter += 1
+                packname = ('#%d#' % indexcounter)
+                tempobject = VLSI(temp,packname,len(globals.VLSIlist))
+                globals.VLSIlist.append(tempobject)
                 break
-        elif (i == len(temp) -1):
-            start = 0
-            end = len(temp) - 1
-            indexcounter += 1
-            packname = ('#%d#' % indexcounter)
-            tempobject = VLSI(temp,packname,len(globals.VLSIlist))
-            globals.VLSIlist.append(tempobject)
-            break
             
         
-        if (start >= 0):        
-            indexcounter+=1
-            temp1 = temp[start+1:end]
-            packname = ('#%d#' % indexcounter) #    (a+b) -> #indexcounter# and is saved as a var 
-            tempobject = VLSI(temp1,packname,len(globals.VLSIlist))
-            globals.VLSIlist.append(tempobject)
-            temp = temp[:start]+('#%d#' % (indexcounter)) + temp[end+1:]
-            start = -2
-            end = -1
-            i = 0
+            if (start >= 0):        
+                indexcounter+=1
+                temp1 = temp[start+1:end]
+                packname = ('#%d#' % indexcounter) #    (a+b) -> #indexcounter# and is saved as a var 
+                tempobject = VLSI(temp1,packname,len(globals.VLSIlist))
+                globals.VLSIlist.append(tempobject)
+                temp = temp[:start]+('#%d#' % (indexcounter)) + temp[end+1:]
+                start = -2
+                end = -1
+                i = 0
     
-        i+=1
+            i+=1
+    except:
+        print("Bad Input")
+        sys.exit()

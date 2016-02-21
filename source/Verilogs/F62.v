@@ -1,5 +1,5 @@
-module F62 (b , d , VV62V); 
-input b , d;
+module F62 (a , c , VV62V); 
+input a , c;
 output VV62V;
-or f0 (VV62V , b , d);
+and f0 (VV62V , a , c);
 endmodule

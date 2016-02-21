@@ -1,4 +1,4 @@
-module F (VV2V); 
+module F (VV1V); 
 ;
-output VV2V;
+output VV1V;
 endmodule

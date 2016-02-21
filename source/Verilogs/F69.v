@@ -1,5 +1,9 @@
-module F69 (a , b , VV69V); 
-input a , b;
+module F69 (b , a , VV69V); 
+input b , a;
 output VV69V;
-xor f0 (VV69V , a , b);
+wire WW68W0W , WW68W1W;
+
+not f0 (WW68W0W , b);
+not f1 (WW68W1W , a);
+xor f2 (VV69V , WW68W0W , WW68W1W);
 endmodule
