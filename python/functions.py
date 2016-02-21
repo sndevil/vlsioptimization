@@ -1,6 +1,7 @@
 import string
 import globals
-import shlex, subprocess
+import shlex
+import subprocess as sub
 import multiprocessing as mu
 valid_input=[1,0,True,False] # Valid Input For Boolean Functions
 def input_num(input_str):
@@ -139,4 +140,9 @@ def read_results():
         
 def run_scripts():
     print('running scripts')
-    process = subprocess.Popen('cd ..; dc_shell-xg-t -x "source Source.scr"; rm [F]*;', shell=True)
+    process = sub.Popen('cd ..; dc_shell-xg-t -x "source Source.scr"; rm [F]*;',stdin=sub.PIPE,stdout=sub.PIPE,stderr=sub.PIPE , shell=True)
+    result=list(process.communicate())
+    command_out=result[0]
+    command_error=result[1]
+    if len(command_error)!=0:
+        print("**Error In DC_SHELL**")
