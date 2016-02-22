@@ -1,9 +1,5 @@
-module F50 (b , d , VV50V); 
-input b , d;
+module F50 (a , d , VV50V); 
+input a , d;
 output VV50V;
-wire WW49W0W , WW49W1W;
-
-not f0 (WW49W0W , b);
-not f1 (WW49W1W , d);
-or f2 (VV50V , WW49W0W , WW49W1W);
+xor f0 (VV50V , a , d);
 endmodule

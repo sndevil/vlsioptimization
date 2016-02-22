@@ -1,5 +1,5 @@
-module F24 (d , a , VV24V); 
-input d , a;
+module F24 (a , e , VV24V); 
+input a , e;
 output VV24V;
-xor f0 (VV24V , d , a);
+or f0 (VV24V , a , e);
 endmodule

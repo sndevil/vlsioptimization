@@ -1,8 +1,5 @@
-module F70 (d , c , VV70V); 
-input d , c;
+module F70 (VV66V , VV69V , VV70V); 
+input VV66V , VV69V;
 output VV70V;
-wire WW69W0W;
-
-not f0 (WW69W0W , d);
-or f1 (VV70V , WW69W0W , c);
+xor f0 (VV70V , VV66V , VV69V);
 endmodule

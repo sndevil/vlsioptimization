@@ -3,6 +3,7 @@ import globals
 import shlex
 import subprocess as sub
 import multiprocessing as mu
+import os
 valid_input=[1,0,True,False] # Valid Input For Boolean Functions
 def input_num(input_str):
     '''
@@ -55,24 +56,27 @@ def table_maker(obj):
     pass
 def func_creator(obj):
     pass
-
-def script_func(t):
-    file_name = 'S' + t.packname.replace("#",'')
-    verilog_name = 'F'+ t.packname.replace('#','')
-    script_file=open('../scripts/' + file_name +'.scr',"w")
+def remover(path): # This Function Remove all of the file in the path folder
+    list_of_files=os.listdir(path)
+    for i in range(len(list_of_files)):
+        os.remove(path+list_of_files[i])
+        
+def script_func(script_file,verilog_name,file_name):
+    #file_name = 'S' + t.packname.replace("#",'')
+    #verilog_name = 'F'+ t.packname.replace('#','')
+    #script_file=open('../scripts/' + file_name +'.scr',"w")
     script_file.write('set power_preserve_rtl_hier_names "true"\n')
-    script_file.write('analyze -format verilog { source/Verilogs/' + verilog_name + '.v' +'}\n')
-    script_file.write('elaborate ' + verilog_name+'\n')
+    #script_file.write('analyze -format verilog { source/Verilogs/' + verilog_name + '.v' +'}\n')
+    #script_file.write('elaborate ' + verilog_name+'\n')
     script_file.write('link\n')
     script_file.write('uniquify -force\n')
     script_file.write('compile -map_effort medium\n')
     script_file.write('change_names -rules verilog -hierarchy\n')
     script_file.write('write -format verilog -hierarchy -output '+ 'netlist/' + verilog_name + '.v\n')
     script_file.write('uplevel #0 { report_power -analysis_effort low } > Power/' + verilog_name +'.txt\n')
-    script_file.write('uplevel #0 { report_area -nosplit } > Area/'+ verilog_name +'.txt\n')
     script_file.close()
-    source_file.write('source scripts/'+ file_name+'.scr\n')
-    return None
+    #script_file.write('uplevel #0 { report_area -nosplit } > Area/'+ verilog_name +'.txt\n')
+    #source_file.write('source scripts/'+ file_name+'.scr\n')
 def make_script_files():
     source_file = open('../Source.scr','w')
     source_file.write('set_app_var link_library "/ICIC/180/TSMC/LIB/synopsys/slow.db"\n')
@@ -81,27 +85,34 @@ def make_script_files():
     #writerQueue = Queue()
     #manager=mu.Manager()
     #q=manager.Queue()
-    #p=mu.Pool(mu.cpu_count()+2)
-    result=map(script_func,globals.VLSIlist)
-    #p.apply_async(script_func,args=(i,))
+    #p=mu.Pool(10)
+    #script_list=[]
+    #result=map(script_func,globals.VLSIlist)
+    #for t in globals.VLSIlist:
+     #   file_name = 'S' + t.packname.replace("#",'')
+      #  verilog_name = 'F'+ t.packname.replace('#','')
+       # script_file=open('../scripts/' + file_name +'.scr',"w")
+    #result=p.apply_async(script_func,script_list)
+     #   p.apply_async(script_func,args=(script_file,verilog_name,file_name))
     #writerQueue=Queue()
     #write_process=Process(target=script_func,args=(writerQueue,globals.VLSIlist))
     #write_process.start()
-    #for t in globals.VLSIlist:
-        #file_name = 'S' + t.packname.replace("#",'')
-        #verilog_name = 'F'+ t.packname.replace('#','')
-        #with open('../scripts/' + file_name +'.scr',"w") as script_file:
-            #script_file.write('set power_preserve_rtl_hier_names "true"\n')
-            #script_file.write('analyze -format verilog { source/Verilogs/' + verilog_name + '.v' +'}\n')
-            #script_file.write('elaborate ' + verilog_name+'\n')
-            #script_file.write('link\n')
-            #script_file.write('uniquify -force\n')
-            #script_file.write('compile -map_effort medium\n')
-            #script_file.write('change_names -rules verilog -hierarchy\n')
-            #script_file.write('write -format verilog -hierarchy -output '+ 'netlist/' + verilog_name + '.v\n')
-            #script_file.write('uplevel #0 { report_power -analysis_effort low } > Power/' + verilog_name +'.txt\n')
-            #script_file.write('uplevel #0 { report_area -nosplit } > Area/'+ verilog_name +'.txt\n')
-            #source_file.write('source scripts/'+ file_name+'.scr\n')
+    remover('../scripts/')
+    for t in globals.VLSIlist:
+        file_name = 'S' + t.packname.replace("#",'')
+        verilog_name = 'F'+ t.packname.replace('#','')
+        with open('../scripts/' + file_name +'.scr',"w") as script_file:
+            script_file.write('set power_preserve_rtl_hier_names "true"\n')
+            script_file.write('analyze -format verilog { source/Verilogs/' + verilog_name + '.v' +'}\n')
+            script_file.write('elaborate ' + verilog_name+'\n')
+            script_file.write('link\n')
+            script_file.write('uniquify -force\n')
+            script_file.write('compile -map_effort medium\n')
+            script_file.write('change_names -rules verilog -hierarchy\n')
+            script_file.write('write -format verilog -hierarchy -output '+ 'netlist/' + verilog_name + '.v\n')
+            script_file.write('uplevel #0 { report_power -analysis_effort low } > Power/' + verilog_name +'.txt\n')
+            script_file.write('uplevel #0 { report_area -nosplit } > Area/'+ verilog_name +'.txt\n')
+            source_file.write('source scripts/'+ file_name+'.scr\n')
     source_file.write('exit')
     source_file.close()
 

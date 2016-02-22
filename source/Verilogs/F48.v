@@ -1,5 +1,5 @@
-module F48 (d , a , VV48V); 
-input d , a;
+module F48 (b , c , VV48V); 
+input b , c;
 output VV48V;
-or f0 (VV48V , d , a);
+and f0 (VV48V , b , c);
 endmodule

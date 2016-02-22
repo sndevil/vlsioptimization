@@ -1,5 +1,5 @@
-module F4 (k , e , VV4V); 
-input k , e;
+module F4 (f , n , VV4V); 
+input f , n;
 output VV4V;
-xor f0 (VV4V , k , e);
+or f0 (VV4V , f , n);
 endmodule

@@ -56,9 +56,11 @@ print("Parser Performance Time: "+parser_perf_time) # Print Time Performance
 print("Table Maker Performance Time: "+table_perf_time) # Print Time Performance
 
 ###      while (1):
-
+timer_4=time.perf_counter()
 make_script_files()
-
+timer_5=time.perf_counter()
+script_maker_perf=str(timer_5-timer_4)+" Sec"
+print("Script Maker Performance Time: "+script_maker_perf)
 ###     run the scripts
 print_result() ## this should be commented
 

@@ -1,5 +1,5 @@
-module F68 (VV64V , VV67V , VV68V); 
-input VV64V , VV67V;
+module F68 (c , e , VV68V); 
+input c , e;
 output VV68V;
-or f0 (VV68V , VV64V , VV67V);
+or f0 (VV68V , c , e);
 endmodule

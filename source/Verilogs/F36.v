@@ -1,5 +1,5 @@
-module F36 (VV34V , VV35V , VV36V); 
-input VV34V , VV35V;
+module F36 (c , a , VV36V); 
+input c , a;
 output VV36V;
-xor f0 (VV36V , VV34V , VV35V);
+and f0 (VV36V , c , a);
 endmodule

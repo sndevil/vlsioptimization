@@ -1,8 +1,5 @@
-module F16 (b , d , VV16V); 
-input b , d;
+module F16 (c , d , VV16V); 
+input c , d;
 output VV16V;
-wire WW15W0W;
-
-not f0 (WW15W0W , b);
-and f1 (VV16V , d , WW15W0W);
+and f0 (VV16V , c , d);
 endmodule

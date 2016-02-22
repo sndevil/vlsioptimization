@@ -1,5 +1,5 @@
-module F40 (VV38V , VV39V , VV40V); 
-input VV38V , VV39V;
+module F40 (e , b , VV40V); 
+input e , b;
 output VV40V;
-xor f0 (VV40V , VV38V , VV39V);
+xor f0 (VV40V , e , b);
 endmodule

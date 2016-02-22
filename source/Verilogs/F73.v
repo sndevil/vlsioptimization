@@ -1,8 +1,5 @@
-module F73 (d , c , VV73V); 
-input d , c;
+module F73 (d , b , VV73V); 
+input d , b;
 output VV73V;
-wire WW72W0W;
-
-not f0 (WW72W0W , d);
-and f1 (VV73V , WW72W0W , c);
+and f0 (VV73V , d , b);
 endmodule

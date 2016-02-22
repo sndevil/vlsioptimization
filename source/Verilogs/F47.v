@@ -1,8 +1,5 @@
-module F47 (a , b , VV47V); 
-input a , b;
+module F47 (b , a , VV47V); 
+input b , a;
 output VV47V;
-wire WW46W0W;
-
-not f0 (WW46W0W , a);
-xor f1 (VV47V , b , WW46W0W);
+xor f0 (VV47V , b , a);
 endmodule

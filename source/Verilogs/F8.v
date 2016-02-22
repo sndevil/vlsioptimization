@@ -1,8 +1,5 @@
-module F8 (b , a , VV8V); 
-input b , a;
+module F8 (b , d , VV8V); 
+input b , d;
 output VV8V;
-wire WW7W0W;
-
-not f0 (WW7W0W , b);
-and f1 (VV8V , a , WW7W0W);
+or f0 (VV8V , b , d);
 endmodule

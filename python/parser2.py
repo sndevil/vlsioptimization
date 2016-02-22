@@ -1,13 +1,17 @@
 from VLSI import *
 import globals
 import sys
+def make_func(counter):
+    
+    
+    return None
+    
 def make_table():
     for counter in range(0,2**(len(globals.inputs.strlist))):
         temp = counter
         for i in range(0,len(globals.inputs.strlist)):
             globals.varlist.varlist[globals.inputs.ptrlist[i]] = int(temp%2)
             temp =int(temp/ 2)
-
         globals.table.append(calculate_result())
         counter+=1
 

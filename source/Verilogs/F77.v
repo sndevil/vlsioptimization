@@ -1,5 +1,5 @@
-module F77 (VV61V , VV76V , VV77V); 
-input VV61V , VV76V;
+module F77 (VV75V , VV76V , VV77V); 
+input VV75V , VV76V;
 output VV77V;
-or f0 (VV77V , VV61V , VV76V);
+and f0 (VV77V , VV75V , VV76V);
 endmodule

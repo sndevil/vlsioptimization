@@ -1,5 +1,5 @@
-module F64 (VV62V , VV63V , VV64V); 
-input VV62V , VV63V;
+module F64 (a , b , VV64V); 
+input a , b;
 output VV64V;
-xor f0 (VV64V , VV62V , VV63V);
+and f0 (VV64V , a , b);
 endmodule

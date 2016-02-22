@@ -1,5 +1,5 @@
-module F33 (VV31V , VV32V , VV33V); 
-input VV31V , VV32V;
+module F33 (a , e , VV33V); 
+input a , e;
 output VV33V;
-or f0 (VV33V , VV31V , VV32V);
+or f0 (VV33V , a , e);
 endmodule

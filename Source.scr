@@ -1,4 +1,11 @@
 set_app_var link_library "/ICIC/180/TSMC/LIB/synopsys/slow.db"
 set_app_var target_library "/ICIC/180/TSMC/LIB/synopsys/slow.db"
 set_app_var target_library "/ICIC/180/TSMC/LIB/synopsys/slow.db"
+source scripts/S1.scr
+source scripts/S2.scr
+source scripts/S3.scr
+source scripts/S4.scr
+source scripts/S5.scr
+source scripts/S6.scr
+source scripts/S7.scr
 exit

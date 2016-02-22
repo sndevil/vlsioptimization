@@ -1,5 +1,5 @@
-module F75 (VV71V , VV74V , VV75V); 
-input VV71V , VV74V;
+module F75 (b , c , VV75V); 
+input b , c;
 output VV75V;
-and f0 (VV75V , VV71V , VV74V);
+and f0 (VV75V , b , c);
 endmodule

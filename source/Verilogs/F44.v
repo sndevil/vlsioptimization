@@ -1,5 +1,5 @@
-module F44 (VV40V , VV43V , VV44V); 
-input VV40V , VV43V;
+module F44 (VV42V , VV43V , VV44V); 
+input VV42V , VV43V;
 output VV44V;
-and f0 (VV44V , VV40V , VV43V);
+or f0 (VV44V , VV42V , VV43V);
 endmodule

@@ -1,8 +1,5 @@
-module F12 (c , b , VV12V); 
-input c , b;
+module F12 (d , e , VV12V); 
+input d , e;
 output VV12V;
-wire WW11W0W;
-
-not f0 (WW11W0W , c);
-and f1 (VV12V , b , WW11W0W);
+xor f0 (VV12V , d , e);
 endmodule

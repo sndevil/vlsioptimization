@@ -1,8 +1,5 @@
-module F58 (c , a , VV58V); 
-input c , a;
+module F58 (a , e , VV58V); 
+input a , e;
 output VV58V;
-wire WW57W0W;
-
-not f0 (WW57W0W , c);
-and f1 (VV58V , WW57W0W , a);
+and f0 (VV58V , a , e);
 endmodule

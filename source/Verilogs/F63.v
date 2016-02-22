@@ -1,8 +1,5 @@
-module F63 (d , b , VV63V); 
-input d , b;
+module F63 (VV31V , VV62V , VV63V); 
+input VV31V , VV62V;
 output VV63V;
-wire WW62W0W;
-
-not f0 (WW62W0W , d);
-or f1 (VV63V , WW62W0W , b);
+or f0 (VV63V , VV31V , VV62V);
 endmodule

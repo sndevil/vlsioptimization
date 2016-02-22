@@ -1,5 +1,5 @@
-module F26 (c , a , VV26V); 
-input c , a;
+module F26 (e , b , VV26V); 
+input e , b;
 output VV26V;
-and f0 (VV26V , c , a);
+or f0 (VV26V , e , b);
 endmodule

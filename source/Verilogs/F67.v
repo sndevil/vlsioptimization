@@ -1,5 +1,5 @@
-module F67 (VV65V , VV66V , VV67V); 
-input VV65V , VV66V;
+module F67 (c , d , VV67V); 
+input c , d;
 output VV67V;
-xor f0 (VV67V , VV65V , VV66V);
+and f0 (VV67V , c , d);
 endmodule

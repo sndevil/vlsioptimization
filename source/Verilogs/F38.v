@@ -1,8 +1,5 @@
-module F38 (d , a , VV38V); 
-input d , a;
+module F38 (VV34V , VV37V , VV38V); 
+input VV34V , VV37V;
 output VV38V;
-wire WW37W0W;
-
-not f0 (WW37W0W , d);
-and f1 (VV38V , WW37W0W , a);
+and f0 (VV38V , VV34V , VV37V);
 endmodule
