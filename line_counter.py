@@ -22,20 +22,20 @@ def start_up(version):
     print("Pycounter By Sepand Haghighi , Version : "+version)
     print("Operating System :"+platform.system())
 #---------------------------------------------------------------------------------------
-def comment(line):
-    index=line.find("#")
-    if index!=-1:
-        sub_line=line[:index]
-        for i in sub_line:
+def comment(line): # this function extract comment
+    index=line.find("#") # search for # as comment sign
+    if index!=-1: # if it's in the line 
+        sub_line=line[:index] # create sub_line as prev chars
+        for i in sub_line: # if there is any chars before this sign it's not comment
             if i in string.ascii_letters or i in string.punctuation:
                 return False
                 break
         return True
-    else:
+    else: # if there is no sign of # in the line , it's not a comment
         return False
-def get_input():
+def get_input(): # this function get a string from user for ignoring comment lines in count or not
     input_string=input(" Ignore Comment[1] Or Not[2]")
-    if int(input_string)==1:
+    if int(input_string)==1: 
         return True
     else:
         return False
@@ -51,7 +51,7 @@ def main():
     for j in range(len(folder_list)): # find each python files in each direction and count lines
         folder=os.listdir(folder_list[j])
         for i in range(len(folder)):
-            if folder[i].find(".py")!=-1 and folder[i]!="line_counter.py" and folder[i].find(".pyd")==-1 and folder[i].find("pyc")==-1:
+            if folder[i].find(".py")!=-1 and folder[i]!="line_counter.py" and folder[i][-1].lower()=="y":
                 c_file=open(folder_list[j]+folder[i],"r")
                 counter=counter+1
                 for line in c_file:

@@ -45,3 +45,23 @@ Total Lines : 1712
 8-VLSI.py : 255	././python/
 Total Lines : 755
 ----------------------------------------
+1-functions.py : 139	././python/
+2-generator_2.py : 97	././python/
+3-globals.py : 22	././python/
+4-logic.py : 37	././python/
+5-parser.py : 75	././python/
+6-parser2.py : 88	././python/
+7-test.py : 66	././python/
+8-VLSI.py : 255	././python/
+Total Lines : 779
+----------------------------------------
+1-functions.py : 139	././python/
+2-generator_2.py : 97	././python/
+3-globals.py : 22	././python/
+4-logic.py : 37	././python/
+5-parser.py : 75	././python/
+6-parser2.py : 88	././python/
+7-test.py : 66	././python/
+8-VLSI.py : 255	././python/
+Total Lines : 779
+----------------------------------------
