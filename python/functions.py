@@ -97,7 +97,9 @@ def make_script_files():
     #writerQueue=Queue()
     #write_process=Process(target=script_func,args=(writerQueue,globals.VLSIlist))
     #write_process.start()
-    remover('../scripts/')
+    remove_input=input("Delete Script Folder [y]")
+    if remove_input=="y":
+        remover('../scripts/')
     for t in globals.VLSIlist:
         file_name = 'S' + t.packname.replace("#",'')
         verilog_name = 'F'+ t.packname.replace('#','')
